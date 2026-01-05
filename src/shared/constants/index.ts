@@ -32,4 +32,5 @@ export const SCREENS = {
   ABOUT: "About",
   CONTACT_US: "ContactUs",
   ACCOUNT_VERIFICATION: "AccountVerification",
+  LIVE_STREAM: "LiveStream",
 };
