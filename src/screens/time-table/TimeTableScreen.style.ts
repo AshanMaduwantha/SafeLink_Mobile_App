@@ -1,0 +1,358 @@
+import { Platform, StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+    paddingTop: Platform.select({
+      ios: 0,
+      android: 20,
+    }),
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  headerTitleContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notificationButton: {
+    padding: 8,
+  },
+  searchBarContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+
+    borderRadius: 10,
+    marginHorizontal: 16,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  searchIcon: {
+    marginLeft: 12,
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    color: "#000",
+  },
+  customHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    marginBottom: 10,
+    width: "100%",
+  },
+  monthYearContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+  monthText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000",
+    marginHorizontal: 10,
+  },
+  yearText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000",
+    marginHorizontal: 10,
+  },
+  dropdownHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  dayContainer: {
+    width: 36,
+    height: 36,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 18,
+  },
+  dayText: {
+    fontSize: 14,
+    color: "#000",
+  },
+  today: {
+    backgroundColor: "#e6f7ff",
+  },
+  todayText: {
+    color: "blue",
+  },
+  selectedDay: {
+    backgroundColor: "#1877F2",
+  },
+  selectedDayText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  disabledText: {
+    color: "#ccc",
+  },
+  highlightedWeekBackground: {
+    backgroundColor: "#E0E0E0",
+  },
+  highlightedWeekText: {
+    color: "#000",
+  },
+  scheduleContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
+    marginTop: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: "#fff",
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginBottom: 40,
+  },
+  eventRow: {
+    flexDirection: "row",
+    marginBottom: 50,
+  },
+  eventTimeContainer: {
+    width: 60,
+    marginRight: 16,
+    alignItems: "flex-end",
+  },
+  eventTime: {
+    fontSize: 14,
+    color: "#888",
+    fontWeight: "600",
+  },
+  timelineContainer: {
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: 20,
+    marginLeft: -10,
+    marginTop: 16,
+    flex: 1,
+  },
+  eventDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#D3D3D3",
+    zIndex: 1,
+  },
+  eventLine: {
+    width: 1,
+    backgroundColor: "#D3D3D3",
+    flex: 1,
+    marginTop: 5,
+  },
+  eventCard: {
+    flex: 1,
+    backgroundColor: "#F0F8FF",
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 8,
+  },
+  bookedEventCard: {
+    backgroundColor: "#FEE2E2",
+  },
+  bookedTag: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "#000",
+    borderRadius: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  bookedTagText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "bold",
+    marginLeft: 4,
+  },
+  eventTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000",
+    marginBottom: 4,
+  },
+  eventDescription: {
+    fontSize: 12,
+    color: "#666",
+    marginBottom: 8,
+  },
+  eventCamp: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: "#000",
+    marginBottom: 8,
+  },
+  teacherInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  teacherAvatar: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    marginRight: 8,
+  },
+  teacherName: {
+    fontSize: 12,
+    color: "#333",
+    marginLeft: 5,
+  },
+  dueDate: {
+    fontSize: 12,
+    color: "#1877F2",
+    fontWeight: "600",
+  },
+  bookNowButtonContainer: {
+    marginTop: 10,
+    alignItems: "center",
+  },
+  bookNowButton: {
+    fontSize: 14,
+    color: "#1877F2",
+    fontWeight: "bold",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 5,
+  },
+  alreadyBookedButton: {
+    fontSize: 14,
+    color: "#1877F2",
+    fontWeight: "bold",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 5,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    marginVertical: 4,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 10,
+    width: "80%",
+    maxHeight: "80%",
+  },
+  pickerItem: {
+    padding: 10,
+    fontSize: 18,
+    textAlign: "center",
+  },
+  closeButton: {
+    marginTop: 10,
+    padding: 10,
+    fontSize: 18,
+    textAlign: "center",
+    color: "red",
+  },
+  filterContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginVertical: 10,
+    marginHorizontal: 16,
+    backgroundColor: "#F0F0F0",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  filterButton: {
+    flex: 1,
+    paddingVertical: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  filterButtonActive: {
+    backgroundColor: "#1877F2",
+  },
+  filterButtonText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#888",
+  },
+  filterButtonTextActive: {
+    color: "#fff",
+  },
+  avatarContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  avatarText: {
+    color: "white",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
+  },
+  loadingText: {
+    marginTop: 16,
+    fontSize: 16,
+    color: "#666",
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
+    paddingHorizontal: 20,
+  },
+  errorText: {
+    marginTop: 16,
+    fontSize: 16,
+    color: "#666",
+    textAlign: "center",
+  },
+  retryButton: {
+    marginTop: 20,
+    backgroundColor: "#2563EB",
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  retryButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  noEventsContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
+    paddingHorizontal: 20,
+  },
+  noEventsIcon: {
+    marginBottom: 16,
+  },
+  noEventsText: {
+    fontSize: 18,
+    color: "#666",
+    textAlign: "center",
+  },
+});

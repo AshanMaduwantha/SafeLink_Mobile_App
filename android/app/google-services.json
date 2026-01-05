@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "812589116900",
+    "project_id": "safelink-3eb67",
+    "storage_bucket": "safelink-3eb67.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812589116900:android:ababe59c019cd7aa132bf1",
+        "android_client_info": {
+          "package_name": "com.team.safelink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812589116900-3r6k9f5e7vn9lojgs1oguo33492s3ldu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team.safelink",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "812589116900-s2ibudve24f2mft77udps0392k9gttq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZaCRi0dXSMliHrfDgcCwB-FBEUzUsOzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812589116900-s2ibudve24f2mft77udps0392k9gttq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

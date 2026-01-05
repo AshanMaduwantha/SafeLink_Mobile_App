@@ -1,0 +1,35 @@
+// ? Screens
+export const COLORS = {
+  WHITE: "#FFFFFF",
+  BLACK: "#000000",
+  PRIMARY: "#2176FF",
+  BACKGROUND_LIGHT: "#F8F8F8",
+  TEXT_DARK: "#333333",
+  BORDER_LIGHT: "#E0E0E0",
+  GREY_LIGHT: "#A0A0A0",
+};
+
+export const SCREENS = {
+  ROOT: "Root",
+  HOME: "Home",
+  TIME_TABLE: "Book Now",
+  PROFILE: "You",
+  DETAIL: "Detail",
+  ONBOARDING: "Onboarding",
+  ONBOARDING_2: "Onboarding2",
+  ONBOARDING_3: "Onboarding3",
+  GET_STARTED: "GetStarted",
+  LOGIN: "Login",
+  SIGNUP: "SignUp",
+  FORGOT_PASSWORD: "ForgotPassword",
+  FORGOT_PASSWORD_CODE: "ForgotPasswordCode",
+  PASSWORD_RESET_EMAIL_SENT: "PasswordResetEmailSent",
+  RESET_PASSWORD: "ResetPassword",
+  PASSWORD_CHANGED: "PasswordChanged",
+  NOTIFICATION: "Notification",
+  CLASSES: "My Schedule",
+  MY_ACCOUNT: "MyAccount",
+  ABOUT: "About",
+  CONTACT_US: "ContactUs",
+  ACCOUNT_VERIFICATION: "AccountVerification",
+};
