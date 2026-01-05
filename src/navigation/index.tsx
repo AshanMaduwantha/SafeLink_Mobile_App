@@ -26,6 +26,7 @@ import DetailScreen from "@screens/detail/DetailScreen";
 import ForgotPasswordCodeScreen from "@screens/forgot-password-code/ForgotPasswordCodeScreen";
 import ForgotPasswordScreen from "@screens/forgot-password/ForgotPasswordScreen";
 import GetStartedScreen from "@screens/get-started/GetStartedScreen";
+import LiveStreamScreen from "@screens/live-stream/LiveStreamScreen";
 import LoginScreen from "@screens/login/LoginScreen";
 import MyScheduleScreen from "@screens/my-schedule/MyScheduleScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
@@ -78,6 +79,7 @@ export type RootStackParamList = {
   [SCREENS.ABOUT]: undefined;
   [SCREENS.CONTACT_US]: undefined;
   [SCREENS.ACCOUNT_VERIFICATION]: undefined;
+  [SCREENS.LIVE_STREAM]: { meetingId: string };
 };
 
 export type LoginScreenNavigationProp = StackNavigationProp<
@@ -289,6 +291,7 @@ const Navigation = () => {
           name={SCREENS.ACCOUNT_VERIFICATION}
           component={AccountVerificationScreen}
         />
+        <Stack.Screen name={SCREENS.LIVE_STREAM} component={LiveStreamScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
