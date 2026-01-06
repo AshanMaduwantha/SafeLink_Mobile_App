@@ -125,9 +125,8 @@ A one-touch emergency feature designed to provide police with real-time situatio
 ## 3. Real-Time AI System for Detecting Harmful Social Media Content (FERNANDO P K S - IT22329660)
 
 ### Overview
-A multi-modal AI system that detects violence, abuse, and harmful behavior across social media platforms in real time.
+This component uses AI to automatically detect harmful social media content such as harassment, hate speech, abuse, and violent threats. It supports both Sinhala and English, including mixed-language text commonly used in Sri Lanka. The system categorizes harmful messages, displays results with confidence levels on a monitoring dashboard, and helps authorities respond quickly to high-risk content, improving online safety and monitoring efficiency.
 
-### Workflow
 1. Public social media content is continuously fetched.
 2. Keyword-based pre-filtering selects candidate content.
 3. Text, video, and audio are analyzed in parallel.
