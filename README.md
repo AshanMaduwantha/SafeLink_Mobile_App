@@ -1,258 +1,180 @@
-# React-Native Mobile App Boilerplate
+# SafeLink – AI-Powered Public Safety Platform for Sri Lanka 🇱🇰
 
-A comprehensive React Native mobile application for class management, featuring class scheduling, course enrollment, payment processing, and student management.
+## Project Overview
 
-## Features
+**SafeLink** is an AI-powered, multilingual mobile platform designed to enhance public safety and community policing in Sri Lanka. The system addresses critical gaps in existing emergency response and policing solutions by integrating real-time communication, intelligent data analysis, and citizen engagement into a single digital ecosystem.
 
-- **User Authentication**: Firebase-based authentication with email/password and Google Sign-In
-- **Class Management**: Browse and enroll in fitness classes
-- **Course System**: Access structured fitness courses with outlines
-- **Schedule Management**: View personal schedule and class timetables
-- **Payment Integration**: Secure payment processing for enrollments
-- **News & Updates**: Latest news and announcements
-- **Profile Management**: User account and settings
-- **Responsive Design**: Optimized for both iOS and Android
+Traditional SOS and crime-reporting systems often rely on delayed communication, limited context, or manual processing. SafeLink overcomes these limitations by combining **real-time GPS tracking, live audio/video streaming, AI-driven threat detection, automated traffic violation handling, and proactive social media monitoring**. The platform enables law enforcement agencies to respond faster, prioritize critical cases, and make data-driven decisions while empowering citizens to actively participate in community safety.
 
-## Tech Stack
-
-### Frontend (Mobile App)
-- **React Native** 0.81.4
-- **TypeScript** for type safety
-- **React Navigation** for navigation
-- **Firebase** for authentication and backend services
-- **NativeWind** for styling (Tailwind CSS)
-- **Gluestack UI** for component library
-- **Axios** for API calls
-- **React Native Vector Icons** for icons
-
-### Backend API
-- **Express.js** with TypeScript
-- **RDS PostgreSQL** database
-- **Firebase Admin SDK** for authentication
-- **JWT** token verification
-- **Security middleware** (Helmet, CORS, Rate limiting)
-
-## Prerequisites
-
-Before running this project, make sure you have the following installed:
-
-### Core Requirements
-- **Node.js** (>= 18)
-- **Yarn** package manager
-- **React Native CLI**
-- **Git** for version control
-
-### iOS Development Requirements
-- **Xcode** (latest version from App Store)
-- **iOS Simulator** (iPhone 15+ recommended)
-- **CocoaPods** (`sudo gem install cocoapods`)
-
-### Android Development Requirements
-- **Java JDK 17**
-- **Android Studio** (latest version)
-- **Android SDK** with the following platforms:
-  - Android 16.0 (API Level 36)
-  - Android 15.0 (API Level 35) 
-  - Android 14.0 (API Level 34)
-- **Android SDK Build Tools**:
-  - 36.1.0 RC1
-  - 36.00
-  - 35.00
-  - 34.00
-- **Android NDK** (Native Development Kit):
-  - Version 27.1
-  - Version 26.1
-- **Android SDK Command Line Tools**
-- **CMake** 3.22.1
-- **Android Emulator** (AVD Manager)
-
-### System Requirements
-- **RAM**: Minimum 8GB, Recommended 16GB
-- **Storage**: At least 20GB free space
-- **CPU**: 
-  - **Apple Silicon**: Recommended for iOS development
-  - **Intel/AMD**: Recomended atleast Intel Core i5 8400 or AMD Ryzen 5 3600x
-
-### Important Notes
-- **Hypervisor**: For Android development, ensure hypervisor is enabled on your system
-- **Emulator Drivers**: Some CPUs require Android Emulator Hypervisor Driver to be installed
-- **Environment Variables**: Set `ANDROID_HOME` and `JAVA_HOME` environment variables
-- **Network**: Stable internet connection for downloading dependencies
-
-
-## Getting Started
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/StudioMate-app.git
-cd StudioMate-app
-```
-
-### 2. Install Dependencies
-
-```bash
-# Install npm dependencies
-yarn install
-
-# Install iOS dependencies (macOS only)
-cd ios && pod install && cd ..
-```
-
-### 3. Environment Setup
-
-1. Create environment file:
-```bash
-cp .env.example .env
-```
-
-2. Configure your `.env` file with:
-   - API Base URL
-   - APP Envirnoment
-
-3. Clone and setup express backend:
-```bash
-git clone https://github.com/xgenlabsmel/StudioMate-app-backend.git
-```
-
-## Running the App
-
-### iOS
-
-```bash
-# Start Metro bundler & Build Process
-yarn ios
-
-# Start only Metro Bundler.
-yarn start
-```
-
-### Android
-
-```bash
-# Start only Metro Bundler
-yarn start
-
-# Start Metro bundler & Build Process 
-npm run android
-```
-
-**Android SDK Setup:**
-If you encounter Android SDK issues, create `android/local.properties`:
-
-```bash
-cd android
-mkdir -p local.properties
-echo "sdk.dir=/Users/$(whoami)/Library/Android/sdk" > local.properties
-cd ..
-```
-
-## Development Scripts
-
-### Mobile App Scripts
-```bash
-yarn start              # Start Metro bundler
-yarn ios                # Run on iOS simulator
-yarn android            # Run on Android emulator
-yarn lint               # Run ESLint
-yarn prettier           # Format code with Prettier
-yarn type-check         # TypeScript type checking
-yarn clean:android      # Clean Android build
-yarn release:android    # Build Android release
-```
-
-### Backend Scripts
-```bash
-yarn dev                # Start development server
-yarn build              # Build TypeScript
-yarn start              # Start production server
-yarn lint               # Run ESLint
-yarn test               # Run tests
-```
-
-## Project Structure
-
-```
-StudioMate-app/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── screens/        # App screens
-│   ├── navigation/     # Navigation configuration
-│   ├── services/       # API services
-│   ├── shared/         # Shared utilities and constants
-│   └── utils/          # Helper functions
-├── android/           # Android-specific code
-├── ios/               # iOS-specific code
-└── assets/            # Images, fonts, and other assets
-
-StudioMate-app-backend/
-├── src/
-│   ├── controllers/   # Route controllers
-│   ├── services/      # Business logic
-│   ├── routes/        # API routes
-│   ├── middleware/    # Custom middleware
-│   └── types/         # TypeScript type definitions
-└── dist/              # Compiled JavaScript
-```
-
-## Testing
-
-```bash
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test -- --coverage
-```
-
-## Building for Production
-
-### Android
-```bash
-# Build release APK
-yarn release:android
-
-# Build release bundle for Play Store
-yarn release:play
-```
-
-### iOS
-1. Open `ios/StudioMate.xcworkspace` in Xcode
-2. Select your target device/simulator
-3. Choose "Product" → "Archive" for App Store distribution
-
-## Troubleshooting
-
-### Common Issues
-
-#### Metro Bundler Issues
-```bash
-# Clear Metro cache
-yarn start -- --reset-cache
-```
-
-#### iOS Build Issues
-```bash
-# Clean and reinstall pods
-cd ios && pod install && cd ..
-
-# Clean Xcode build folder
-# In Xcode: Product → Clean Build Folder
-
-# Reset iOS simulator
-# In Simulator: Device → Erase All Content and Settings
-```
-
-#### Android Build Issues
-```bash
-# Clean Android build
-cd android && ./gradlew clean && cd ..
-
-# Clear Android cache
-cd android && ./gradlew cleanBuildCache && cd ..
-
-# Reset Android emulator
-# In Android Studio: Tools → AVD Manager → Wipe Data
-```
+The solution is designed specifically for the Sri Lankan context, supporting **Sinhala and English**, localized datasets, and region-specific public safety challenges.
 
 ---
+
+## System Architecture
+
+SafeLink follows a **modular, service-oriented architecture** that supports scalability, real-time processing, and secure data handling.
+
+### High-Level Architecture
+- Citizen Mobile Application (React Native)
+- Backend API & Real-Time Communication Layer
+- AI/ML Processing Services
+- Secure Databases & Media Storage
+- Police Monitoring & Analytics Dashboard
+
+### Architecture Flow
+1. Users interact with the mobile app to report incidents, activate SOS alerts, or access traffic services.
+2. Requests are handled by backend APIs and real-time services.
+3. AI pipelines analyze images, videos, audio, text, and location data.
+4. Processed results are stored securely and visualized in police dashboards.
+5. Authorities receive real-time alerts and insights for rapid response.
+
+📌 **System Architecture Diagram (draw.io):**  
+_Add draw.io link here_
+
+---
+
+## Technologies Used
+
+### Mobile & Frontend
+- React Native
+- GPS & Location Services
+- Camera and Microphone APIs
+- WebSockets for real-time updates
+
+### Backend & Infrastructure
+- Node.js with Express
+- REST APIs
+- WebSocket-based real-time communication
+- OAuth 2.0 & JWT authentication
+- Secure cloud-based storage
+
+### Artificial Intelligence & Machine Learning
+- YOLOv8 (object and action detection)
+- Whisper / Wav2Vec2 (speech-to-text)
+- BERT / RoBERTa / XLM-R (NLP)
+- Machine learning models for:
+  - Risk prediction
+  - Alert validation
+  - Traffic pattern analysis
+
+### Data & Security
+- GPS and geospatial analysis
+- Encrypted data storage
+- Role-based access control
+- Secure digital transaction handling
+
+---
+
+## System Components
+
+---
+
+## 1. Community Alerts & Neighborhood Watch (INDUDUNU I W O - IT22321054)
+
+### Overview
+This component enables citizens to share real-time safety alerts within their local communities while maintaining reliability through AI-based validation.
+
+### Workflow
+1. Users create a safety alert with text, GPS location, and optional media.
+2. The backend validates alerts using NLP and image analysis.
+3. Alerts are clustered geographically into neighborhood zones.
+4. Verified alerts are shared with nearby users.
+5. Gamification mechanisms reward active participation.
+6. Police and moderators monitor alerts via dashboards.
+7. Push notifications inform users of nearby safety events.
+
+### Technologies Used
+- React Native
+- GPS-based services
+- Node.js & Express
+- WebSockets
+- NLP-based spam detection
+- Image similarity analysis
+- Push notification services
+- JWT-based authentication
+
+---
+
+## 2. Emergency SOS with Real-Time Location & Live Streaming(AMARADASA S A A M - IT22003096)
+
+### Overview
+A one-touch emergency feature designed to provide police with real-time situational awareness during critical incidents.
+
+### Workflow
+1. User activates SOS with a single tap.
+2. Real-time GPS tracking begins.
+3. Live video and audio streaming is initiated.
+4. AI analyzes video, audio, and location risk.
+5. A risk score is calculated to assess severity.
+6. High-risk cases are escalated automatically.
+7. Police view live streams and AI insights on dashboards.
+8. Tracking continues until resolution.
+
+### Technologies Used
+- React Native
+- Mobile camera & microphone APIs
+- GPS tracking
+- WebRTC / live streaming protocols
+- YOLOv8
+- Audio analysis models
+- Machine learning risk scoring
+- WebSockets
+
+---
+
+## 3. Real-Time AI System for Detecting Harmful Social Media Content (FERNANDO P K S - IT22329660)
+
+### Overview
+A multi-modal AI system that detects violence, abuse, and harmful behavior across social media platforms in real time.
+
+### Workflow
+1. Public social media content is continuously fetched.
+2. Keyword-based pre-filtering selects candidate content.
+3. Text, video, and audio are analyzed in parallel.
+4. Speech is transcribed and passed to NLP models.
+5. Multi-modal predictions are fused into a final decision.
+6. High-confidence harmful content triggers alerts.
+7. Authorities receive real-time notifications.
+8. Confirmed cases are used for continuous model improvement.
+
+### Technologies Used
+- Social media APIs
+- YOLOv8 (video action detection)
+- Video processing pipelines
+- Whisper / Wav2Vec2
+- BERT / RoBERTa / XLM-R
+- Multilingual NLP (Sinhala & English)
+- Stream processing frameworks
+- Alerting systems
+
+---
+
+## 4. Traffic Violation Reporting & Fine Payment(JAYAKODY J M P S B - IT22331236)
+
+### Overview
+An intelligent digital traffic management system that automates violation detection, fine handling, and dispute resolution.
+
+### Workflow
+1. Violations are captured via CCTV, dashcams, or user uploads.
+2. AI detects violations and recognizes license plates.
+3. Violation records are stored securely.
+4. ML models analyze trends and high-risk locations.
+5. Users receive fine notifications via the app.
+6. Digital payment and dispute options are provided.
+7. NLP chatbot handles user queries.
+8. Authorities access analytics dashboards.
+
+### Technologies Used
+- React Native
+- Computer vision (ALPR)
+- YOLOv8
+- Machine learning analytics
+- NLP chatbot
+- Secure payment gateways
+- Backend APIs & databases
+
+---
+
+## Conclusion
+
+SafeLink is a comprehensive AI-driven public safety platform that modernizes community policing in Sri Lanka. By combining real-time communication, advanced AI technologies, and citizen engagement, the system enables faster emergency responses, transparent traffic management, and proactive threat detection. The modular and scalable design ensures that SafeLink can evolve with future public safety needs while building trust between citizens and law enforcement.
