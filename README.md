@@ -137,14 +137,20 @@ This component uses AI to automatically detect harmful social media content such
 8. Confirmed cases are used for continuous model improvement.
 
 ### Technologies Used
-- Social media APIs
-- YOLOv11 (video action detection)
-- Video processing pipelines
-- Whisper / Wav2Vec2
-- BERT / RoBERTa / XLM-R
-- Multilingual NLP (Sinhala & English)
-- Stream processing frameworks
-- Alerting systems
+- Social media APIs - Collect real-time posts, comments, videos, and audio from social media platforms for monitoring.
+- YOLOv11 (video action detection) - Detects violent or harmful actions from video content in real time.
+- Video processing pipelines - Extract and manage video frames and streams for efficient analysis.
+- Whisper / Wav2Vec2 - Convert speech from videos or audio into text for further harmful content analysis.
+- BERT / RoBERTa / XLM-R - Analyze text to classify harassment, hate speech, abuse, and violent threats.
+- Multilingual NLP (Sinhala & English) - Enables understanding of Sinhala, English, and mixed-language social media content.
+- Stream processing frameworks - Process large volumes of content continuously in real time.
+- Alerting systems - Trigger alerts for high-risk content to enable quick review or action.
+
+## Future Development & Enhancements
+- **Explainable AI (XAI):** Generate human-readable explanations for model predictions
+- **Multimodal Fusion:** Combine text, audio, and video insights for better accuracy
+- **Context-Aware Detection:** Improve understanding of sarcasm and local slang
+- **Advanced Alerting:** Prioritize alerts based on threat severity
 
 ---
 
