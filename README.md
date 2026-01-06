@@ -146,7 +146,7 @@ This component uses AI to automatically detect harmful social media content such
 - Stream processing frameworks - Process large volumes of content continuously in real time.
 - Alerting systems - Trigger alerts for high-risk content to enable quick review or action.
 
-## Future Development & Enhancements
+## Future Development & Enhancements (By Next Evaluation)
 - **Explainable AI (XAI):** Generate human-readable explanations for model predictions
 - **Multimodal Fusion:** Combine text, audio, and video insights for better accuracy
 - **Context-Aware Detection:** Improve understanding of sarcasm and local slang
