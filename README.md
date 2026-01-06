@@ -49,7 +49,7 @@ _Add draw.io link here_
 - Secure cloud-based storage
 
 ### Artificial Intelligence & Machine Learning
-- YOLOv8 (object and action detection)
+- YOLOv11 (object and action detection)
 - Whisper / Wav2Vec2 (speech-to-text)
 - BERT / RoBERTa / XLM-R (NLP)
 - Machine learning models for:
@@ -115,7 +115,7 @@ A one-touch emergency feature designed to provide police with real-time situatio
 - Mobile camera & microphone APIs
 - GPS tracking
 - WebRTC / live streaming protocols
-- YOLOv8
+- YOLOv11
 - Audio analysis models
 - Machine learning risk scoring
 - WebSockets
@@ -139,7 +139,7 @@ A multi-modal AI system that detects violence, abuse, and harmful behavior acros
 
 ### Technologies Used
 - Social media APIs
-- YOLOv8 (video action detection)
+- YOLOv11 (video action detection)
 - Video processing pipelines
 - Whisper / Wav2Vec2
 - BERT / RoBERTa / XLM-R
@@ -167,7 +167,7 @@ An intelligent digital traffic management system that automates violation detect
 ### Technologies Used
 - React Native
 - Computer vision (ALPR)
-- YOLOv8
+- YOLOv11
 - Machine learning analytics
 - NLP chatbot
 - Secure payment gateways
