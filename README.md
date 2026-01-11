@@ -175,7 +175,7 @@ This component uses AI to automatically detect harmful social media content such
 
 ---
 
-## 4. Traffic Violation Reporting & Fine Payment(JAYAKODY J M P S B - IT22331236)
+## 4. Smart Traffic Violation Detection & Accident Prediction System(JAYAKODY J M P S B - IT22331236)
 
 ### Overview
 This component focuses on developing an AI-powered system to automatically detect traffic violations and predict accident-prone situations in real time. The system analyzes images and videos captured from CCTV cameras, mobile devices, and user submissions to identify traffic rule violations such as illegal lane crossing, signal violations, and unsafe driving behavior. It also integrates vehicle detection and number plate recognition to support enforcement actions. By providing real-time alerts and risk predictions, the system assists police authorities in improving road safety, reducing manual monitoring effort, and enabling faster response to traffic incidents.
