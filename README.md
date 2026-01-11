@@ -72,11 +72,7 @@ https://www.figma.com/design/twgRcDduS1NeY4YLBpQNgP/Untitled?node-id=0-1&t=Ok8AV
 ## 1. Community Alerts & Neighborhood Watch (INDUDUNU I W O - IT22321054)
 
 ### Overview
-The Emergency SOS with Real-Time Location & Live Streaming component is designed to improve emergency response by enabling users to send instant SOS alerts with live GPS location, video, and audio. Unlike traditional emergency systems that rely only on voice calls or text messages, this component provides real-time situational awareness to emergency responders.
-
-The system uses AI-based video detection (YOLOv11) to identify threats such as weapons, fire, and accidents, audio analysis (YAMNet) to detect distress sounds, and natural language processing (NLP) to understand the user’s emergency message. All these inputs are combined to assess the severity of the situation and help authorities prioritize responses quickly and accurately.
-
-This component aims to reduce response time, improve decision-making, and enhance public safety through a smart, secure, and user-friendly emergency communication system.
+This component is responsible for analyzing incident data related to women and children using video, audio, and text. It detects women and children from video content, extracts and transcribes audio using speech recognition, and analyzes the resulting text to identify the type of incident. The system filters relevant incidents, stores them with time and location information, and uses this data to support safety risk analysis and prediction. The main purpose of this component is to convert raw multimedia data into meaningful safety insights that can help generate alerts and improve public safety decision-making.
 
 ### Workflow
 1. Users create a safety alert with text, GPS location, and optional media.
@@ -102,7 +98,11 @@ This component aims to reduce response time, improve decision-making, and enhanc
 ## 2. Emergency SOS with Real-Time Location & Live Streaming(AMARADASA S A A M - IT22003096)
 
 ### Overview
-A one-touch emergency feature designed to provide police with real-time situational awareness during critical incidents.
+The Emergency SOS with Real-Time Location & Live Streaming component is designed to improve emergency response by enabling users to send instant SOS alerts with live GPS location, video, and audio. Unlike traditional emergency systems that rely only on voice calls or text messages, this component provides real-time situational awareness to emergency responders.
+
+The system uses AI-based video detection (YOLOv11) to identify threats such as weapons, fire, and accidents, audio analysis (YAMNet) to detect distress sounds, and natural language processing (NLP) to understand the user’s emergency message. All these inputs are combined to assess the severity of the situation and help authorities prioritize responses quickly and accurately.
+
+This component aims to reduce response time, improve decision-making, and enhance public safety through a smart, secure, and user-friendly emergency communication system.
 
 ### Workflow
 1. User activates SOS with a single tap.
@@ -123,6 +123,16 @@ A one-touch emergency feature designed to provide police with real-time situatio
 - Audio analysis models
 - Machine learning risk scoring
 - WebSockets
+
+## Future Development & Enhancements (By Next Evaluation)
+- **Multimodal Model Integration** - Integrate YOLO-based video detection, YAMNet audio classification, and NLP text analysis into a single real-time SOS processing pipeline.
+- **Severity Scoring & Prioritization** - Combine video, audio, and text outputs to calculate a unified emergency severity score for better case prioritization.
+- **Enhanced Police Dashboard** - Improve the dashboard to support live video/audio streams, SOS alerts, location tracking, and priority-based case handling.
+- **NLP Model Expansion** - Train and fine-tune the NLP model using Sinhala and English emergency text datasets for better intent and distress detection.
+- **Performance Optimization** - Reduce end-to-end latency from SOS activation to responder notification.
+- **Evaluation & Validation** - Evaluate system performance using accuracy, response time, reliability, and user acceptance metrics.
+- **Security & Privacy Enhancements** - Strengthen encryption, secure evidence storage, and role-based access control to protect user data.
+- **Deployment & Real-World Testing** - Prepare the system for deployment and conduct real-world testing with simulated emergency scenarios.
 
 ---
 
