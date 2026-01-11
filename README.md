@@ -178,26 +178,41 @@ This component uses AI to automatically detect harmful social media content such
 ## 4. Traffic Violation Reporting & Fine Payment(JAYAKODY J M P S B - IT22331236)
 
 ### Overview
-An intelligent digital traffic management system that automates violation detection, fine handling, and dispute resolution.
+This component focuses on developing an AI-powered system to automatically detect traffic violations and predict accident-prone situations in real time. The system analyzes images and videos captured from CCTV cameras, mobile devices, and user submissions to identify traffic rule violations such as illegal lane crossing, signal violations, and unsafe driving behavior. It also integrates vehicle detection and number plate recognition to support enforcement actions. By providing real-time alerts and risk predictions, the system assists police authorities in improving road safety, reducing manual monitoring effort, and enabling faster response to traffic incidents.
+
 
 ### Workflow
-1. Violations are captured via CCTV, dashcams, or user uploads.
-2. AI detects violations and recognizes license plates.
-3. Violation records are stored securely.
-4. ML models analyze trends and high-risk locations.
-5. Users receive fine notifications via the app.
-6. Digital payment and dispute options are provided.
-7. NLP chatbot handles user queries.
-8. Authorities access analytics dashboards.
+1. Traffic images and videos are collected from CCTV feeds and user-reported submissions.
+2. Input data is pre-processed to enhance visibility and remove noise.
+3. AI-based object detection identifies vehicles, lanes, traffic signals, and road markings.
+4. Traffic violations such as lane violations and illegal movements are detected using rule-based logic combined with AI predictions.
+5. Vehicle number plates are automatically detected and extracted for identification.
+6. Historical traffic patterns and contextual factors are analyzed to predict accident-prone situations.
+7. Detected violations and risk scores are displayed on a police monitoring dashboard.
+8. High-risk violations trigger real-time alerts for enforcement or preventive action.
 
+Verified cases are stored to continuously improve model accuracy.
 ### Technologies Used
-- React Native
-- Computer vision (ALPR)
-- YOLOv11
-- Machine learning analytics
-- NLP chatbot
-- Secure payment gateways
-- Backend APIs & databases
+- CCTV / Mobile Camera Inputs – Capture real-time traffic images and videos for analysis.
+- YOLOv11 (Object Detection) – Detect vehicles, number plates, and traffic-related objects accurately in real time.
+- Computer Vision Pipelines – Process video frames and images efficiently for detection and tracking.
+- License Plate Detection & OCR – Identify vehicle registration numbers to support enforcement and record keeping.
+- Rule-Based Violation Logic – Determine traffic violations based on detected objects and road rules.
+- Accident Risk Prediction Models – Analyze traffic density and behavior patterns to estimate accident probability.
+- Real-Time Dashboard – Visualize violations, confidence scores, and vehicle details for police monitoring.
+- Alerting System – Notify authorities immediately when severe violations or high-risk situations are detected.
+
+---
+
+
+## Future Development & Enhancements (By Next Evaluation)
+- **Violation Logic Implementation:** Implement rule-based logic on top of the trained detection model to automatically classify detected events as valid traffic violations (e.g., lane violations, illegal crossings).
+- **End-to-End Testing with Images and Videos:** Test the trained models using real-world images and video inputs to validate detection accuracy and robustness under different traffic conditions.
+- **License Plate Recognition Integration: **Integrate license plate detection with OCR to extract vehicle registration numbers from detected violations.
+- **Confidence-Based Filtering:** Apply confidence score thresholds to reduce false positives and ensure reliable violation detection results.
+- **Dashboard Data Binding:** Connect model outputs (violation type, vehicle number, confidence score) to the police dashboard UI designed in Figma.
+- **Performance Evaluation & Visualization:** Analyze precision, recall, mAP, and confusion matrices to evaluate model performance and include these results in the evaluation report.
+- **System Demonstration Preparation:** Prepare a working demonstration showing image/video upload, violation detection, and result visualization for the PP2 presentation. Prioritize alerts based on threat severity
 
 ---
 
