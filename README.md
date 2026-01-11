@@ -208,7 +208,7 @@ Verified cases are stored to continuously improve model accuracy.
 ## Future Development & Enhancements (By Next Evaluation)
 - **Violation Logic Implementation:** Implement rule-based logic on top of the trained detection model to automatically classify detected events as valid traffic violations (e.g., lane violations, illegal crossings).
 - **End-to-End Testing with Images and Videos:** Test the trained models using real-world images and video inputs to validate detection accuracy and robustness under different traffic conditions.
-- **License Plate Recognition Integration: **Integrate license plate detection with OCR to extract vehicle registration numbers from detected violations.
+- **License Plate Recognition Integration:** Integrate license plate detection with OCR to extract vehicle registration numbers from detected violations.
 - **Confidence-Based Filtering:** Apply confidence score thresholds to reduce false positives and ensure reliable violation detection results.
 - **Dashboard Data Binding:** Connect model outputs (violation type, vehicle number, confidence score) to the police dashboard UI designed in Figma.
 - **Performance Evaluation & Visualization:** Analyze precision, recall, mAP, and confusion matrices to evaluate model performance and include these results in the evaluation report.
