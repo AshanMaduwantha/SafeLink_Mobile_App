@@ -72,7 +72,11 @@ https://www.figma.com/design/twgRcDduS1NeY4YLBpQNgP/Untitled?node-id=0-1&t=Ok8AV
 ## 1. Community Alerts & Neighborhood Watch (INDUDUNU I W O - IT22321054)
 
 ### Overview
-This component enables citizens to share real-time safety alerts within their local communities while maintaining reliability through AI-based validation.
+The Emergency SOS with Real-Time Location & Live Streaming component is designed to improve emergency response by enabling users to send instant SOS alerts with live GPS location, video, and audio. Unlike traditional emergency systems that rely only on voice calls or text messages, this component provides real-time situational awareness to emergency responders.
+
+The system uses AI-based video detection (YOLOv11) to identify threats such as weapons, fire, and accidents, audio analysis (YAMNet) to detect distress sounds, and natural language processing (NLP) to understand the user’s emergency message. All these inputs are combined to assess the severity of the situation and help authorities prioritize responses quickly and accurately.
+
+This component aims to reduce response time, improve decision-making, and enhance public safety through a smart, secure, and user-friendly emergency communication system.
 
 ### Workflow
 1. Users create a safety alert with text, GPS location, and optional media.
