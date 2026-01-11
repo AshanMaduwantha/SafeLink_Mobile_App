@@ -28,7 +28,7 @@ SafeLink follows a **modular, service-oriented architecture** that supports scal
 4. Processed results are stored securely and visualized in police dashboards.
 5. Authorities receive real-time alerts and insights for rapid response.
 
-📌 **System Architecture Diagram (Figma):
+📌 **System Architecture Diagram (Figma):**
 https://www.figma.com/design/twgRcDduS1NeY4YLBpQNgP/Untitled?node-id=0-1&t=Ok8AVejIuku8hXcr-1
 
 ---
