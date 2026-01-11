@@ -93,6 +93,13 @@ This component is responsible for analyzing incident data related to women and c
 - Push notification services
 - JWT-based authentication
 
+## Future Development & Enhancements (By Next Evaluation)
+- Improve Sinhala–English incident dataset and increase NLP accuracy.
+- Fuse video + audio + text outputs into one incident decision (confidence-based).
+- Store structured incidents in DB (time, location, incident type, confidence).
+- Build risk prediction layer (risk zones + time patterns), heatmap + alerts.
+- Create APIs (FastAPI) and connect to simple Mobile UI + Police dashboard.
+
 ---
 
 ## 2. Emergency SOS with Real-Time Location & Live Streaming(AMARADASA S A A M - IT22003096)
