@@ -26,6 +26,12 @@ import DetailScreen from "@screens/detail/DetailScreen";
 import ForgotPasswordCodeScreen from "@screens/forgot-password-code/ForgotPasswordCodeScreen";
 import ForgotPasswordScreen from "@screens/forgot-password/ForgotPasswordScreen";
 import GetStartedScreen from "@screens/get-started/GetStartedScreen";
+import LiveStreamScreen from "@screens/live-stream/LiveStreamScreen";
+import { VoiceNoteScreen } from "@screens/voice-note";
+import SafetyMonitorWomenChildrenScreen from "@screens/safety-monitor/SafetyMonitorWomenChildrenScreen";
+import ViewHeatmapScreen from "@screens/safety-monitor/ViewHeatmapScreen";
+import SafetyAlertsScreen from "@screens/safety-monitor/SafetyAlertsScreen";
+import SafetyInsightsScreen from "@screens/safety-monitor/SafetyInsightsScreen";
 import LoginScreen from "@screens/login/LoginScreen";
 import MyScheduleScreen from "@screens/my-schedule/MyScheduleScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
@@ -78,6 +84,16 @@ export type RootStackParamList = {
   [SCREENS.ABOUT]: undefined;
   [SCREENS.CONTACT_US]: undefined;
   [SCREENS.ACCOUNT_VERIFICATION]: undefined;
+  [SCREENS.LIVE_STREAM]: { meetingId: string };
+  [SCREENS.VOICE_NOTE]: undefined;
+  [SCREENS.SAFETY_MONITOR]: undefined;
+  [SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN]: undefined;
+  [SCREENS.VIEW_HEATMAP]: undefined;
+  [SCREENS.SAFETY_ALERTS]: undefined;
+  [SCREENS.SAFETY_INSIGHTS]: undefined;
+  [SCREENS.REPORT_VIOLATION]: undefined;
+  [SCREENS.DRIVE_MODE]: undefined;
+  [SCREENS.MY_REPORTS]: undefined;
 };
 
 export type LoginScreenNavigationProp = StackNavigationProp<
@@ -288,6 +304,48 @@ const Navigation = () => {
         <Stack.Screen
           name={SCREENS.ACCOUNT_VERIFICATION}
           component={AccountVerificationScreen}
+        />
+        <Stack.Screen name={SCREENS.LIVE_STREAM} component={LiveStreamScreen} />
+        <Stack.Screen name={SCREENS.VOICE_NOTE} component={VoiceNoteScreen} />
+        <Stack.Screen
+          name={SCREENS.SAFETY_MONITOR}
+          getComponent={() =>
+            require("@screens/traffic-violation/SafetyMonitorScreen").default
+          }
+        />
+        <Stack.Screen
+          name={SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN}
+          component={SafetyMonitorWomenChildrenScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.VIEW_HEATMAP}
+          component={ViewHeatmapScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.SAFETY_ALERTS}
+          component={SafetyAlertsScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.SAFETY_INSIGHTS}
+          component={SafetyInsightsScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.REPORT_VIOLATION}
+          getComponent={() =>
+            require("@screens/traffic-violation/ReportViolationScreen").default
+          }
+        />
+        <Stack.Screen
+          name={SCREENS.DRIVE_MODE}
+          getComponent={() =>
+            require("@screens/traffic-violation/DriveModeScreen").default
+          }
+        />
+        <Stack.Screen
+          name={SCREENS.MY_REPORTS}
+          getComponent={() =>
+            require("@screens/traffic-violation/MyReportsScreen").default
+          }
         />
       </Stack.Navigator>
     </NavigationContainer>

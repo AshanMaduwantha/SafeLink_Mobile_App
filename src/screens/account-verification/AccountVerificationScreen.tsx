@@ -31,12 +31,8 @@ const AccountVerificationScreen: React.FC = () => {
 
         console.log("[Firebase Auth] User role:", role);
 
-        // Navigate based on role
-        if (role === "instructor") {
-          navigation.replace(SCREENS.INSTRUCTOR_HOME);
-        } else {
-          navigation.replace(SCREENS.ROOT);
-        }
+        // Navigate to main app (ROOT screen contains the tab navigator)
+        navigation.replace(SCREENS.ROOT);
       } catch (err: any) {
         console.error("Account verification error:", err);
         setError("Failed to verify account. Please try again.");

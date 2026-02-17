@@ -49,10 +49,8 @@ const LoginScreen: React.FC = () => {
     const result = await handleEmailSignIn({ email, password });
 
     if (result.success) {
-      // Navigate based on user role
-      const targetScreen =
-        result.role === "instructor" ? SCREENS.INSTRUCTOR_HOME : SCREENS.ROOT;
-      navigation.replace(targetScreen);
+      // Navigate to main app
+      navigation.replace(SCREENS.ROOT);
     } else {
       if (
         result.error?.includes("Validation Error") ||
