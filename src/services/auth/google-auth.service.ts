@@ -24,7 +24,7 @@ export const initializeGoogleSignIn = () => {
     webClientId:
       "812589116900-s2ibudve24f2mft77udps0392k9gttq5.apps.googleusercontent.com", //public ID
     offlineAccess: true,
-    forceCodeForRefreshToken: true, 
+    forceCodeForRefreshToken: true,
   });
 };
 
