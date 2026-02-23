@@ -1,207 +1,171 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    backgroundColor: "#ffffffff",
-    width: "100%",
-    paddingTop: 80,
+    backgroundColor: "#ffffff",
+    paddingHorizontal: 24,
   },
-  scrollContainer: {
+  scrollContent: {
     flexGrow: 1,
-    paddingBottom: 15,
-    paddingHorizontal: 20,
+    justifyContent: "center",
+    paddingBottom: 40,
+  },
+  titleSection: {
+    alignItems: "center",
+    marginBottom: 32,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "900",
+    fontSize: 26,
+    fontWeight: "800",
+    color: "#1a1a1a",
     marginBottom: 8,
-    color: "#000000",
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: "500",
+    color: "#999",
+    textAlign: "center",
+  },
+
+  fieldGroup: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1a1a1a",
     marginBottom: 8,
-    color: "#969696",
   },
-  inputField: {
-    minHeight: 70,
-    paddingVertical: 22,
-    paddingHorizontal: 24,
-    fontSize: 14,
-    borderRadius: 7,
-    flex: 1,
-  },
-  selectText: {
-    height: "100%",
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-    fontSize: 14,
-    flex: 1,
-    lineHeight: 35,
-  },
-  placeholderText: {
-    color: "#9CA3AF",
-  },
-  selectedText: {
-    color: "#000000",
-  },
-  input: {
-    borderRadius: 7,
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#E5E7EB",
     backgroundColor: "#FFFFFF",
-    width: "100%",
-  },
-  selectTrigger: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 35,
+    height: 52,
     paddingHorizontal: 16,
   },
-  passwordPlaceholder: {
-    fontSize: 20,
-    letterSpacing: 2,
+  textInput: {
+    flex: 1,
+    fontSize: 14,
+    color: "#333",
+    paddingVertical: 0,
   },
-  passwordInputContainer: {
-    position: "relative",
-    justifyContent: "center",
+  passwordInput: {
+    fontSize: 14,
+    letterSpacing: 1,
   },
-  passwordToggle: {
-    position: "absolute",
-    right: 15,
-    padding: 8,
-    zIndex: 1,
+  eyeButton: {
+    padding: 4,
+    marginLeft: 8,
   },
-  formControl: {
-    marginBottom: 5,
-  },
-  termsSection: {
-    marginBottom: 10,
+
+  termsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
+    marginBottom: 28,
   },
   checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    borderColor: "#0B6CFF",
+    width: 18,
+    height: 18,
+    borderWidth: 1.5,
+    borderColor: "#CCC",
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
+    marginRight: 8,
   },
-  checkmark: {
-    color: "#0B6CFF",
-    fontSize: 12,
-    fontWeight: "bold",
+  checkboxChecked: {
+    backgroundColor: "#E53935",
+    borderColor: "#E53935",
   },
   termsText: {
-    fontSize: 14,
+    fontSize: 13,
     color: "#333",
   },
   termsLink: {
-    fontSize: 14,
-    color: "#0B6CFF",
-    fontWeight: "500",
+    fontSize: 13,
+    color: "#E53935",
+    fontWeight: "600",
+  },
+
+  signUpButton: {
+    backgroundColor: "#E53935",
+    borderRadius: 12,
+    height: 52,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  signUpButtonRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  signUpButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  spinnerMargin: {
+    marginRight: 8,
+  },
+
+  dividerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
   },
   divider: {
     flex: 1,
     height: 1,
-    backgroundColor: "#a7a7a7ff",
+    backgroundColor: "#E5E7EB",
   },
   dividerText: {
-    fontSize: 14,
-    color: "#666",
-    paddingHorizontal: 16,
+    fontSize: 13,
+    color: "#999",
+    paddingHorizontal: 14,
   },
+
   socialButton: {
-    flex: 1,
-    borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#E5E7EB",
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FFFFFF",
-    paddingVertical: 12,
+    height: 52,
+    marginBottom: 12,
   },
   socialButtonText: {
-    fontSize: 16,
+    fontSize: 15,
     color: "#4B5563",
     fontWeight: "500",
+    marginLeft: 10,
   },
-  facebookLogo: {
-    fontSize: 28,
-    color: "#1877f2",
-    fontWeight: "bold",
-    fontFamily: "Arial",
+
+  footerSection: {
+    alignItems: "center",
+    marginTop: 32,
   },
-  socialSection: {
-    marginTop: 5,
+  footerRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   footerText: {
     fontSize: 14,
     color: "#333",
   },
-  footerSection: {
-    marginTop: 5,
-  },
   signInLink: {
     fontSize: 14,
-    color: "#0B6CFF",
-    fontWeight: "500",
-  },
-  chevronIcon: {
-    marginLeft: 8,
-  },
-  signUpButton: {
-    backgroundColor: "#226CFF",
-    borderRadius: 10,
-  },
-  titleSection: {
-    marginBottom: 5,
-  },
-  spinnerMargin: {
-    marginRight: 8,
-  },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    paddingTop: 200,
-  },
-  dropdownContainer: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-    width: "85%",
-    maxHeight: 280,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  dropdownItem: {
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#F3F4F6",
-  },
-  dropdownItemLast: {
-    borderBottomWidth: 0,
-  },
-  dropdownItemText: {
-    fontSize: 16,
-    color: "#333333",
-  },
-  dropdownItemSelected: {
-    color: "#0B6CFF",
-    fontWeight: "500",
+    color: "#E53935",
+    fontWeight: "600",
   },
 });

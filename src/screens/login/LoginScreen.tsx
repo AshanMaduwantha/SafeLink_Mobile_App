@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  KeyboardAvoidingView,
   Platform,
+  ScrollView,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Button, ButtonText } from "@/components/ui/button";
-import {
-  FormControl,
-  FormControlLabel,
-  FormControlLabelText,
-} from "@/components/ui/form-control";
+import Icon from "react-native-vector-icons/Ionicons";
 import GoogleLogo from "@/components/ui/google-logo";
-import { HStack } from "@/components/ui/hstack";
-import { Input, InputField } from "@/components/ui/input";
-import { VStack } from "@/components/ui/vstack";
 import {
   handleAppleSignIn,
   handleEmailSignIn,
@@ -37,6 +31,7 @@ const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -45,11 +40,9 @@ const LoginScreen: React.FC = () => {
 
   const handleLogin = async () => {
     setIsLoading(true);
-
     const result = await handleEmailSignIn({ email, password });
 
     if (result.success) {
-      // Navigate to main app
       navigation.replace(SCREENS.ROOT);
     } else {
       if (
@@ -62,13 +55,11 @@ const LoginScreen: React.FC = () => {
         showSignInError(result.error || "An error occurred during sign in");
       }
     }
-
     setIsLoading(false);
   };
 
   const handleGoogleLogin = async () => {
     const result = await handleGoogleSignIn();
-
     if (result.success) {
       navigation.replace(SCREENS.ROOT);
     } else {
@@ -80,7 +71,6 @@ const LoginScreen: React.FC = () => {
 
   const handleAppleLogin = async () => {
     const result = await handleAppleSignIn();
-
     if (result.success) {
       navigation.replace(SCREENS.ROOT);
     } else {
@@ -91,144 +81,132 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <View
-      className="flex-1 justify-center items-center bg-background-0"
+    <KeyboardAvoidingView
       style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <VStack space="xl" className="w-full max-w-sm mb-55">
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.titleSection}>
-          <VStack space="sm" className="items-center">
-            <Text
-              style={styles.title}
-              className="text-center text-normal font-bold"
-            >
-              Sign in
-            </Text>
-            <Text
-              style={styles.subtitle}
-              className="text-center text-typography-500"
-            >
-              Hi Welcome back, you&apos;ve been missed
-            </Text>
-          </VStack>
+          <Text style={styles.title}>Sign in</Text>
+          <Text style={styles.subtitle}>
+            Hi Welcome back, you&apos;ve been missed
+          </Text>
         </View>
 
-        <FormControl style={styles.formControl}>
-          <VStack space="xs">
-            <FormControlLabel>
-              <FormControlLabelText className="text-typography-900">
-                Email
-              </FormControlLabelText>
-            </FormControlLabel>
-            <Input style={styles.input}>
-              <InputField
-                type="text"
-                placeholder="example@gmail.com"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                style={styles.inputField}
-              />
-            </Input>
-          </VStack>
-        </FormControl>
+        <View style={styles.fieldGroup}>
+          <Text style={styles.label}>Email</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="example@gmail.com"
+              placeholderTextColor="#B0B0B0"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+          </View>
+        </View>
 
-        <FormControl style={styles.formControl}>
-          <VStack space="xs">
-            <FormControlLabel>
-              <FormControlLabelText className="text-typography-900">
-                Password
-              </FormControlLabelText>
-            </FormControlLabel>
-            <View style={styles.passwordInputContainer}>
-              <Input style={styles.input}>
-                <InputField
-                  type="text"
-                  placeholder={"••••••••"}
-                  value={password}
-                  onChangeText={setPassword}
-                  secureTextEntry={!showPassword}
-                  style={[styles.inputField, styles.passwordPlaceholder]}
-                />
-              </Input>
-              <TouchableOpacity
-                onPress={() => setShowPassword(!showPassword)}
-                style={styles.passwordToggle}
-              >
-                <Icon
-                  name={showPassword ? "eye" : "eye-slash"}
-                  size={24}
-                  color="#888"
-                />
-              </TouchableOpacity>
-            </View>
+        <View style={styles.fieldGroup}>
+          <Text style={styles.label}>Password</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={[styles.textInput, styles.passwordInput]}
+              placeholder="••••••••••••"
+              placeholderTextColor="#B0B0B0"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={!showPassword}
+            />
             <TouchableOpacity
-              onPress={() => navigation.navigate(SCREENS.FORGOT_PASSWORD)}
-              style={styles.forgotPasswordLink}
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.eyeButton}
             >
-              <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+              <Icon
+                name={showPassword ? "eye-outline" : "eye-off-outline"}
+                size={22}
+                color="#999"
+              />
             </TouchableOpacity>
-          </VStack>
-        </FormControl>
+          </View>
+        </View>
 
-        <Button
-          size="xl"
+        <View style={styles.rememberForgotRow}>
+          <TouchableOpacity
+            style={styles.rememberMeRow}
+            onPress={() => setRememberMe(!rememberMe)}
+            activeOpacity={0.7}
+          >
+            <View
+              style={[styles.checkbox, rememberMe && styles.checkboxChecked]}
+            >
+              {rememberMe && <Icon name="checkmark" size={12} color="#fff" />}
+            </View>
+            <Text style={styles.rememberText}>Remember me</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(SCREENS.FORGOT_PASSWORD)}
+          >
+            <Text style={styles.forgotPasswordText}>Forgot password ?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
           onPress={handleLogin}
-          style={styles.signUpButton}
+          style={styles.signInButton}
           disabled={isLoading}
+          activeOpacity={0.85}
         >
-          <HStack space="sm" className="items-center justify-center">
-            {isLoading && (
+          {isLoading ? (
+            <View style={styles.signInButtonRow}>
               <ActivityIndicator
                 size="small"
-                color="#FFFFFF"
+                color="#fff"
                 style={styles.spinnerMargin}
               />
-            )}
-            <ButtonText>{isLoading ? "Signing in..." : "Sign in"}</ButtonText>
-          </HStack>
-        </Button>
+              <Text style={styles.signInButtonText}>Signing in...</Text>
+            </View>
+          ) : (
+            <Text style={styles.signInButtonText}>Sign up</Text>
+          )}
+        </TouchableOpacity>
 
-        <View style={styles.socialSection}>
-          <HStack space="md" className="items-center">
-            <View style={styles.divider} />
-            <Text style={styles.dividerText}>Connect with</Text>
-            <View style={styles.divider} />
-          </HStack>
-
-          <VStack space="sm" className="mt-8">
-            {Platform.OS === "ios" && (
-              <TouchableOpacity
-                style={styles.socialButton}
-                onPress={handleAppleLogin}
-                disabled={isLoading}
-              >
-                <HStack space="sm" className="items-center justify-center">
-                  <Icon name="apple" size={24} color="#000000" />
-                  <Text style={styles.socialButtonText}>
-                    Continue with Apple
-                  </Text>
-                </HStack>
-              </TouchableOpacity>
-            )}
-            <TouchableOpacity
-              style={styles.socialButton}
-              onPress={handleGoogleLogin}
-              disabled={isLoading}
-            >
-              <HStack space="sm" className="items-center justify-center">
-                <GoogleLogo size={24} />
-                <Text style={styles.socialButtonText}>
-                  Continue with Google
-                </Text>
-              </HStack>
-            </TouchableOpacity>
-          </VStack>
+        <View style={styles.dividerRow}>
+          <View style={styles.divider} />
+          <Text style={styles.dividerText}>Connect with</Text>
+          <View style={styles.divider} />
         </View>
 
+        {Platform.OS === "ios" && (
+          <TouchableOpacity
+            style={styles.socialButton}
+            onPress={handleAppleLogin}
+            disabled={isLoading}
+            activeOpacity={0.7}
+          >
+            <Icon name="logo-apple" size={22} color="#000" />
+            <Text style={styles.socialButtonText}>Continue with Apple</Text>
+          </TouchableOpacity>
+        )}
+
+        <TouchableOpacity
+          style={styles.socialButton}
+          onPress={handleGoogleLogin}
+          disabled={isLoading}
+          activeOpacity={0.7}
+        >
+          <GoogleLogo size={22} />
+          <Text style={styles.socialButtonText}>Continue with Google</Text>
+        </TouchableOpacity>
+
         <View style={styles.footerSection}>
-          <HStack space="xs" className="justify-center items-center">
+          <View style={styles.footerRow}>
             <Text style={styles.footerText}>Don&apos;t have an account? </Text>
             <TouchableOpacity
               onPress={() => navigation.navigate(SCREENS.SIGNUP)}
@@ -236,10 +214,10 @@ const LoginScreen: React.FC = () => {
             >
               <Text style={styles.signUpLink}>Sign up</Text>
             </TouchableOpacity>
-          </HStack>
+          </View>
         </View>
-      </VStack>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

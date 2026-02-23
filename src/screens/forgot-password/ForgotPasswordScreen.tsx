@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Button, ButtonText } from "@/components/ui/button";
 import {
-  FormControl,
-  FormControlLabel,
-  FormControlLabelText,
-} from "@/components/ui/form-control";
-import { HStack } from "@/components/ui/hstack";
-import { Input, InputField } from "@/components/ui/input";
-import { VStack } from "@/components/ui/vstack";
+  ActivityIndicator,
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import auth from "@react-native-firebase/auth";
 import { showValidationError } from "@/services/auth";
 import { LoginScreenNavigationProp } from "@navigation";
-import auth from "@react-native-firebase/auth";
 import { SCREENS } from "@shared-constants";
 import { styles } from "./ForgotPasswordScreen.style";
 
@@ -38,11 +36,8 @@ const ForgotPasswordScreen: React.FC = () => {
     setLoading(true);
     try {
       await auth().sendPasswordResetEmail(normalizedEmail);
-
       navigation.navigate(SCREENS.PASSWORD_RESET_EMAIL_SENT);
     } catch (error: any) {
-      console.log("Error:", error.code, error.message);
-
       if (error.code === "auth/user-not-found") {
         Alert.alert(
           "Account Not Found",
@@ -64,72 +59,54 @@ const ForgotPasswordScreen: React.FC = () => {
       setLoading(false);
     }
   };
-  const handleSignIn = () => {
-    navigation.goBack();
-  };
 
   return (
-    <View
-      className="flex-1 justify-center items-center bg-background-0"
-      style={styles.container}
-    >
-      <VStack space="xl" className="w-full max-w-sm mb-55">
-        <View style={styles.titleSection}>
-          <VStack space="md" className="items-center">
-            <Text
-              style={styles.title}
-              className="text-center text-normal font-bold"
-            >
-              Forgot password?
-            </Text>
-            <Text
-              style={styles.description}
-              className="text-center text-typography-500"
-            >
-              Don&apos;t worry! It happens. Please enter the email associated
-              with your account.
-            </Text>
-          </VStack>
+    <View style={styles.container}>
+      <View style={styles.titleSection}>
+        <Text style={styles.title}>Forgot password?</Text>
+        <Text style={styles.description}>
+          Don&apos;t worry! It happens. Please enter the email associated with
+          your account.
+        </Text>
+      </View>
+
+      <View style={styles.fieldGroup}>
+        <Text style={styles.label}>Email</Text>
+        <View style={styles.inputWrapper}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="example@gmail.com"
+            placeholderTextColor="#B0B0B0"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
         </View>
+      </View>
 
-        <FormControl style={styles.formControl}>
-          <VStack space="xs">
-            <FormControlLabel>
-              <FormControlLabelText className="text-typography-900">
-                Email
-              </FormControlLabelText>
-            </FormControlLabel>
-            <Input style={styles.input}>
-              <InputField
-                type="text"
-                placeholder="example@gmail.com"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                style={styles.inputField}
-              />
-            </Input>
-          </VStack>
-        </FormControl>
+      <TouchableOpacity
+        onPress={handleSendCode}
+        style={styles.sendCodeButton}
+        disabled={loading}
+        activeOpacity={0.85}
+      >
+        {loading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <Text style={styles.sendCodeButtonText}>Send code</Text>
+        )}
+      </TouchableOpacity>
 
-        <Button
-          size="xl"
-          onPress={handleSendCode}
-          style={styles.sendCodeButton}
-          isDisabled={loading}
-        >
-          <ButtonText>{loading ? "Sending..." : "Send code"}</ButtonText>
-        </Button>
-
-        <View style={styles.footerSection}>
-          <HStack space="xs" className="justify-center items-center">
-            <Text style={styles.footerText}>Remember password? </Text>
-            <TouchableOpacity onPress={handleSignIn}>
-              <Text style={styles.signInLink}>Sign in</Text>
-            </TouchableOpacity>
-          </HStack>
+      <View style={styles.footerSection}>
+        <View style={styles.footerRow}>
+          <Text style={styles.footerText}>Remember password? </Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={styles.signInLink}>Sign in</Text>
+          </TouchableOpacity>
         </View>
-      </VStack>
+      </View>
     </View>
   );
 };
