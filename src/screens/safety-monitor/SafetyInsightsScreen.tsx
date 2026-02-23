@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, ScrollView } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Screen from "@/components/Screen";
@@ -65,7 +65,10 @@ const SafetyInsightsScreen = () => {
         >
           <Icon name="arrow-back" size={24} color="#333333" />
         </TouchableOpacity>
-        <TextWrapper style={styles.headerTitle} fontFamily={fonts.poppins.regular}>
+        <TextWrapper
+          style={styles.headerTitle}
+          fontFamily={fonts.poppins.regular}
+        >
           Safety Insights
         </TextWrapper>
         <View style={styles.headerRight} />
@@ -95,10 +98,7 @@ const SafetyInsightsScreen = () => {
                   {insight.title}
                 </TextWrapper>
                 <TextWrapper
-                  style={[
-                    styles.insightValue,
-                    { color: insight.iconColor },
-                  ]}
+                  style={[styles.insightValue, { color: insight.iconColor }]}
                   fontFamily={fonts.poppins.regular}
                 >
                   {insight.value}

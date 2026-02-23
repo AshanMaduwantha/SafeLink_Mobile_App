@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, TextInput, ScrollView } from "react-native";
+import { ScrollView, TextInput, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Screen from "@/components/Screen";
@@ -9,7 +9,9 @@ import { styles } from "./styles/ViewHeatmapScreen.style";
 
 const ViewHeatmapScreen = () => {
   const navigation = useNavigation<any>();
-  const [selectedFilter, setSelectedFilter] = useState<"women" | "children">("women");
+  const [selectedFilter, setSelectedFilter] = useState<"women" | "children">(
+    "women",
+  );
 
   return (
     <Screen style={styles.container}>
@@ -21,7 +23,10 @@ const ViewHeatmapScreen = () => {
         >
           <Icon name="arrow-back" size={24} color="#333333" />
         </TouchableOpacity>
-        <TextWrapper style={styles.headerTitle} fontFamily={fonts.poppins.regular}>
+        <TextWrapper
+          style={styles.headerTitle}
+          fontFamily={fonts.poppins.regular}
+        >
           View Heatmap
         </TextWrapper>
         <View style={styles.headerRight} />
@@ -34,7 +39,12 @@ const ViewHeatmapScreen = () => {
       >
         {/* Search Bar */}
         <View style={styles.searchContainer}>
-          <Icon name="search" size={20} color="#A0A0A0" style={styles.searchIcon} />
+          <Icon
+            name="search"
+            size={20}
+            color="#A0A0A0"
+            style={styles.searchIcon}
+          />
           <TextInput
             style={styles.searchInput}
             placeholder="Search location..."
@@ -65,7 +75,8 @@ const ViewHeatmapScreen = () => {
           <TouchableOpacity
             style={[
               styles.filterButton,
-              selectedFilter === "children" && styles.filterButtonChildrenActive,
+              selectedFilter === "children" &&
+                styles.filterButtonChildrenActive,
             ]}
             onPress={() => setSelectedFilter("children")}
             activeOpacity={0.8}

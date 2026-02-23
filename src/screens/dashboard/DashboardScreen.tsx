@@ -25,7 +25,6 @@ const DashboardScreen: React.FC = () => {
     }
   };
 
-
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="flex-1 px-6 justify-center">
@@ -46,12 +45,16 @@ const DashboardScreen: React.FC = () => {
 
         {/* Women & Children Button */}
         <TouchableOpacity
-          onPress={() => navigation.navigate(SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN)}
+          onPress={() =>
+            navigation.navigate(SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN)
+          }
           activeOpacity={0.8}
           className="h-20 rounded-2xl items-center justify-center shadow-lg mb-4"
           style={{ backgroundColor: "#E91E63" }} // Pink
         >
-          <Text className="text-white text-2xl font-bold">Women & Children</Text>
+          <Text className="text-white text-2xl font-bold">
+            Women & Children
+          </Text>
         </TouchableOpacity>
 
         {/* Traffic Violation Button */}
@@ -61,7 +64,9 @@ const DashboardScreen: React.FC = () => {
           className="h-20 rounded-2xl items-center justify-center shadow-lg"
           style={{ backgroundColor: "#E67E00" }} // Strong Orange
         >
-          <Text className="text-white text-2xl font-bold">Traffic Violation</Text>
+          <Text className="text-white text-2xl font-bold">
+            Traffic Violation
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

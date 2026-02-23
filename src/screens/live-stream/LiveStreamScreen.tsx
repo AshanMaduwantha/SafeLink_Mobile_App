@@ -293,12 +293,11 @@ const LiveStreamScreen = ({ route }: any) => {
           ? summaryText.trim()
           : "Detections: none";
 
-      const detectedObjects =
-        summary.toLowerCase().includes("none")
-          ? []
-          : ["gun", "knife", "fire", "fight"].filter((cls) =>
-              summary.toLowerCase().includes(cls),
-            );
+      const detectedObjects = summary.toLowerCase().includes("none")
+        ? []
+        : ["gun", "knife", "fire", "fight"].filter((cls) =>
+            summary.toLowerCase().includes(cls),
+          );
 
       console.log("⚠️ Detection Summary:", summary);
 
