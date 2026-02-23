@@ -1,20 +1,13 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
-  View,
-  TouchableOpacity,
-  Alert,
   ActivityIndicator,
-  Platform,
+  Alert,
   PermissionsAndroid,
+  Platform,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/Ionicons";
-import { getAuth } from "@react-native-firebase/auth";
-import Screen from "@/components/Screen";
-import TextWrapper from "@/shared/components/text-wrapper/TextWrapper";
-import fonts from "@/shared/theme/fonts";
-import { voiceNotesService } from "@/services/voice-notes";
-import { styles } from "./styles/VoiceNoteScreen.style";
 import AudioRecorderPlayer, {
   AudioEncoderAndroidType,
   AudioSourceAndroidType,
@@ -23,8 +16,20 @@ import AudioRecorderPlayer, {
   OutputFormatAndroidType,
 } from "react-native-audio-recorder-player";
 import RNFS from "react-native-fs";
+import Icon from "react-native-vector-icons/Ionicons";
+import Screen from "@/components/Screen";
+import { voiceNotesService } from "@/services/voice-notes";
+import TextWrapper from "@/shared/components/text-wrapper/TextWrapper";
+import fonts from "@/shared/theme/fonts";
+import { getAuth } from "@react-native-firebase/auth";
+import { styles } from "./styles/VoiceNoteScreen.style";
 
-type RecordingState = "idle" | "recording" | "recorded" | "playing" | "uploading";
+type RecordingState =
+  | "idle"
+  | "recording"
+  | "recorded"
+  | "playing"
+  | "uploading";
 
 const VoiceNoteScreen = () => {
   const navigation = useNavigation();
@@ -65,7 +70,7 @@ const VoiceNoteScreen = () => {
         } else {
           Alert.alert(
             "Permission Required",
-            "Please grant microphone permission to record voice notes."
+            "Please grant microphone permission to record voice notes.",
           );
           return false;
         }
@@ -97,9 +102,11 @@ const VoiceNoteScreen = () => {
       };
 
       const result = await audioRecorderPlayer.startRecorder(path, audioSet);
-      
+
       audioRecorderPlayer.addRecordBackListener((e) => {
-        setRecordTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
+        setRecordTime(
+          audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)),
+        );
         setRecordSecs(Math.floor(e.currentPosition / 1000));
       });
 
@@ -177,13 +184,16 @@ const VoiceNoteScreen = () => {
             setRecordingState("idle");
           },
         },
-      ]
+      ],
     );
   };
 
   const uploadRecording = async () => {
     if (!recordedFilePath || !auth.currentUser) {
-      Alert.alert("Error", "Please record a voice note first and ensure you are logged in.");
+      Alert.alert(
+        "Error",
+        "Please record a voice note first and ensure you are logged in.",
+      );
       return;
     }
 
@@ -197,32 +207,28 @@ const VoiceNoteScreen = () => {
         recordSecs,
         title || `Voice Note ${new Date().toLocaleDateString()}`,
         undefined,
-        (progress) => setUploadProgress(progress)
+        (progress) => setUploadProgress(progress),
       );
 
-      Alert.alert(
-        "Success",
-        "Your voice note has been sent successfully!",
-        [
-          {
-            text: "OK",
-            onPress: () => {
-              // Clean up and reset
-              if (recordedFilePath) {
-                RNFS.unlink(recordedFilePath).catch(() => {});
-              }
-              setRecordedFilePath(null);
-              setRecordTime("00:00");
-              setRecordSecs(0);
-              setPlayTime("00:00");
-              setDuration("00:00");
-              setTitle("");
-              setRecordingState("idle");
-              navigation.goBack();
-            },
+      Alert.alert("Success", "Your voice note has been sent successfully!", [
+        {
+          text: "OK",
+          onPress: () => {
+            // Clean up and reset
+            if (recordedFilePath) {
+              RNFS.unlink(recordedFilePath).catch(() => {});
+            }
+            setRecordedFilePath(null);
+            setRecordTime("00:00");
+            setRecordSecs(0);
+            setPlayTime("00:00");
+            setDuration("00:00");
+            setTitle("");
+            setRecordingState("idle");
+            navigation.goBack();
           },
-        ]
-      );
+        },
+      ]);
     } catch (error) {
       console.error("Error uploading voice note:", error);
       Alert.alert("Error", "Failed to upload voice note. Please try again.");
@@ -240,11 +246,11 @@ const VoiceNoteScreen = () => {
       Alert.alert(
         "Recording in Progress",
         "Please stop the recording before leaving.",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
       return;
     }
-    
+
     if (recordingState === "recorded" || recordingState === "playing") {
       Alert.alert(
         "Unsaved Recording",
@@ -261,11 +267,11 @@ const VoiceNoteScreen = () => {
               navigation.goBack();
             },
           },
-        ]
+        ],
       );
       return;
     }
-    
+
     navigation.goBack();
   };
 
@@ -276,7 +282,10 @@ const VoiceNoteScreen = () => {
         <TouchableOpacity onPress={handleBackPress} style={styles.backButton}>
           <Icon name="arrow-back" size={24} color="#333333" />
         </TouchableOpacity>
-        <TextWrapper style={styles.headerTitle} fontFamily={fonts.poppins.regular}>
+        <TextWrapper
+          style={styles.headerTitle}
+          fontFamily={fonts.poppins.regular}
+        >
           Voice Note
         </TextWrapper>
         <View style={styles.headerRight} />
@@ -298,16 +307,16 @@ const VoiceNoteScreen = () => {
                 recordingState === "recording"
                   ? "mic"
                   : recordingState === "playing"
-                  ? "volume-high"
-                  : "mic-outline"
+                    ? "volume-high"
+                    : "mic-outline"
               }
               size={60}
               color={
                 recordingState === "recording"
                   ? "#FFFFFF"
                   : recordingState === "playing"
-                  ? "#FFFFFF"
-                  : "#2176FF"
+                    ? "#FFFFFF"
+                    : "#2176FF"
               }
             />
           </View>
@@ -315,22 +324,31 @@ const VoiceNoteScreen = () => {
 
         {/* Timer Display */}
         <View style={styles.timerContainer}>
-          <TextWrapper style={styles.timerText} fontFamily={fonts.poppins.regular}>
+          <TextWrapper
+            style={styles.timerText}
+            fontFamily={fonts.poppins.regular}
+          >
             {recordingState === "playing"
               ? formatTime(playTime)
               : recordingState === "recorded"
-              ? formatTime(duration)
-              : formatTime(recordTime)}
+                ? formatTime(duration)
+                : formatTime(recordTime)}
           </TextWrapper>
           {recordingState === "playing" && (
-            <TextWrapper style={styles.durationText} fontFamily={fonts.poppins.regular}>
+            <TextWrapper
+              style={styles.durationText}
+              fontFamily={fonts.poppins.regular}
+            >
               / {formatTime(duration)}
             </TextWrapper>
           )}
         </View>
 
         {/* Status Text */}
-        <TextWrapper style={styles.statusText} fontFamily={fonts.poppins.regular}>
+        <TextWrapper
+          style={styles.statusText}
+          fontFamily={fonts.poppins.regular}
+        >
           {recordingState === "idle" && "Tap the button to start recording"}
           {recordingState === "recording" && "Recording..."}
           {recordingState === "recorded" && "Recording complete"}
@@ -366,10 +384,7 @@ const VoiceNoteScreen = () => {
           )}
 
           {recordingState === "recording" && (
-            <TouchableOpacity
-              style={styles.stopButton}
-              onPress={stopRecording}
-            >
+            <TouchableOpacity style={styles.stopButton} onPress={stopRecording}>
               <Icon name="stop" size={32} color="#FFFFFF" />
             </TouchableOpacity>
           )}
@@ -385,7 +400,9 @@ const VoiceNoteScreen = () => {
 
               <TouchableOpacity
                 style={styles.playButton}
-                onPress={recordingState === "playing" ? stopPlaying : playRecording}
+                onPress={
+                  recordingState === "playing" ? stopPlaying : playRecording
+                }
               >
                 <Icon
                   name={recordingState === "playing" ? "pause" : "play"}
@@ -406,7 +423,10 @@ const VoiceNoteScreen = () => {
 
         {/* Instructions */}
         <View style={styles.instructionsContainer}>
-          <TextWrapper style={styles.instructionText} fontFamily={fonts.poppins.regular}>
+          <TextWrapper
+            style={styles.instructionText}
+            fontFamily={fonts.poppins.regular}
+          >
             {recordingState === "idle" &&
               "Record a voice note to send to the admin. Maximum duration: 5 minutes."}
             {recordingState === "recording" &&

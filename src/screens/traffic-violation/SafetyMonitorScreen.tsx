@@ -108,17 +108,23 @@ const SafetyMonitorScreen: React.FC = () => {
           <View className="flex-row justify-between">
             <View className="items-center flex-1">
               <Text className="text-blue-600 text-2xl font-bold">12</Text>
-              <Text className="text-slate-400 text-xs text-center">Reports</Text>
+              <Text className="text-slate-400 text-xs text-center">
+                Reports
+              </Text>
             </View>
             <View className="w-px h-10 bg-gray-100" />
             <View className="items-center flex-1">
               <Text className="text-green-600 text-2xl font-bold">8</Text>
-              <Text className="text-slate-400 text-xs text-center">Resolved</Text>
+              <Text className="text-slate-400 text-xs text-center">
+                Resolved
+              </Text>
             </View>
             <View className="w-px h-10 bg-gray-100" />
             <View className="items-center flex-1">
               <Text className="text-orange-600 text-2xl font-bold">4</Text>
-              <Text className="text-slate-400 text-xs text-center">Pending</Text>
+              <Text className="text-slate-400 text-xs text-center">
+                Pending
+              </Text>
             </View>
           </View>
         </View>

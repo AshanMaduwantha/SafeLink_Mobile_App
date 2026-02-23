@@ -4,9 +4,9 @@
  * Handles voice note recording upload and management
  */
 
-import apiClient from "../api/api-client";
 import Config from "react-native-config";
 import RNFS from "react-native-fs";
+import apiClient from "../api/api-client";
 
 export interface VoiceNote {
   id: string;
@@ -43,7 +43,7 @@ const voiceNotesService = {
   getPresignedUrl: async (
     fileName: string,
     fileType: string,
-    userId: string
+    userId: string,
   ): Promise<PresignedUrlResponse> => {
     return apiClient.post<PresignedUrlResponse>("/api/s3-upload/voice-note", {
       fileName,
@@ -59,7 +59,7 @@ const voiceNotesService = {
     presignedUrl: string,
     filePath: string,
     fileType: string,
-    onProgress?: UploadProgressCallback
+    onProgress?: UploadProgressCallback,
   ): Promise<boolean> => {
     try {
       // Read file as base64
@@ -122,7 +122,7 @@ const voiceNotesService = {
     audioUrl: string,
     durationSeconds: number,
     title?: string,
-    description?: string
+    description?: string,
   ): Promise<CreateVoiceNoteResponse> => {
     return apiClient.post<CreateVoiceNoteResponse>("/api/voice-notes", {
       userId,
@@ -142,11 +142,12 @@ const voiceNotesService = {
     durationSeconds: number,
     title?: string,
     description?: string,
-    onProgress?: UploadProgressCallback
+    onProgress?: UploadProgressCallback,
   ): Promise<VoiceNote> => {
     try {
       // Extract file name from path
-      const fileName = filePath.split("/").pop() || `voice_note_${Date.now()}.m4a`;
+      const fileName =
+        filePath.split("/").pop() || `voice_note_${Date.now()}.m4a`;
       const fileType = "audio/m4a";
 
       // Step 1: Get presigned URL
@@ -154,7 +155,7 @@ const voiceNotesService = {
       const presignedResponse = await voiceNotesService.getPresignedUrl(
         fileName,
         fileType,
-        userId
+        userId,
       );
 
       if (!presignedResponse.success) {
@@ -170,7 +171,7 @@ const voiceNotesService = {
         (progress) => {
           // Map S3 upload progress to 30-80%
           onProgress?.(30 + Math.round(progress * 0.5));
-        }
+        },
       );
 
       // Step 3: Create database record
@@ -180,7 +181,7 @@ const voiceNotesService = {
         presignedResponse.finalUrl,
         durationSeconds,
         title,
-        description
+        description,
       );
 
       if (!createResponse.success) {

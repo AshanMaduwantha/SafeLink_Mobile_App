@@ -27,11 +27,6 @@ import ForgotPasswordCodeScreen from "@screens/forgot-password-code/ForgotPasswo
 import ForgotPasswordScreen from "@screens/forgot-password/ForgotPasswordScreen";
 import GetStartedScreen from "@screens/get-started/GetStartedScreen";
 import LiveStreamScreen from "@screens/live-stream/LiveStreamScreen";
-import { VoiceNoteScreen } from "@screens/voice-note";
-import SafetyMonitorWomenChildrenScreen from "@screens/safety-monitor/SafetyMonitorWomenChildrenScreen";
-import ViewHeatmapScreen from "@screens/safety-monitor/ViewHeatmapScreen";
-import SafetyAlertsScreen from "@screens/safety-monitor/SafetyAlertsScreen";
-import SafetyInsightsScreen from "@screens/safety-monitor/SafetyInsightsScreen";
 import LoginScreen from "@screens/login/LoginScreen";
 import MyScheduleScreen from "@screens/my-schedule/MyScheduleScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
@@ -44,8 +39,13 @@ import ContactUsScreen from "@screens/profile/ContactUsScreen";
 import MyAccountScreen from "@screens/profile/MyAccountScreen";
 import ProfileScreen from "@screens/profile/ProfileScreen";
 import ResetPasswordScreen from "@screens/reset-password/ResetPasswordScreen";
+import SafetyAlertsScreen from "@screens/safety-monitor/SafetyAlertsScreen";
+import SafetyInsightsScreen from "@screens/safety-monitor/SafetyInsightsScreen";
+import SafetyMonitorWomenChildrenScreen from "@screens/safety-monitor/SafetyMonitorWomenChildrenScreen";
+import ViewHeatmapScreen from "@screens/safety-monitor/ViewHeatmapScreen";
 import SignUpScreen from "@screens/signup/SignUpScreen";
 import TimeTableScreen from "@screens/time-table/TimeTableScreen";
+import { VoiceNoteScreen } from "@screens/voice-note";
 import { FormattedClass } from "@services/models";
 import {
   initializeNotificationHandlers,
