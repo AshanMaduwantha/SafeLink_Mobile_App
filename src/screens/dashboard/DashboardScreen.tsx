@@ -1,13 +1,56 @@
 import React, { useState } from "react";
-import { ActivityIndicator, Alert, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { getAuth } from "@react-native-firebase/auth";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "react-native-vector-icons/Ionicons";
 import { Text } from "@/components/ui/text";
 import { SCREENS } from "@shared-constants";
+import { styles } from "./DashboardScreen.style";
+
+const getGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good Morning";
+  if (hour < 17) return "Good Afternoon";
+  return "Good Evening";
+};
+
+const SERVICE_CARDS = [
+  {
+    key: "sos",
+    title: "Emergency SOS",
+    subtitle: "Immediate assistance",
+    icon: "alert-circle-outline",
+    color: "#E53935",
+  },
+  {
+    key: "women",
+    title: "Women & Children",
+    subtitle: "Protection services",
+    icon: "people-outline",
+    color: "#EC407A",
+  },
+  {
+    key: "traffic",
+    title: "Traffic Violation",
+    subtitle: "Report incidents",
+    icon: "warning-outline",
+    color: "#F57C00",
+  },
+];
 
 const DashboardScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const [loading, setLoading] = useState(false);
+  const { currentUser } = getAuth();
+  const displayName = currentUser?.displayName || "User";
+  const photoURL = currentUser?.photoURL;
 
   const handleStartLive = async () => {
     setLoading(true);
@@ -25,49 +68,67 @@ const DashboardScreen: React.FC = () => {
     }
   };
 
+  const handleCardPress = (key: string) => {
+    switch (key) {
+      case "sos":
+        return handleStartLive();
+      case "women":
+        return navigation.navigate(SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN);
+      case "traffic":
+        return navigation.navigate(SCREENS.SAFETY_MONITOR);
+    }
+  };
+
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 px-6 justify-center">
-        {/* Emergency SOS Button */}
-        <TouchableOpacity
-          onPress={handleStartLive}
-          disabled={loading}
-          activeOpacity={0.8}
-          className="h-20 rounded-2xl items-center justify-center shadow-lg mb-4"
-          style={{ backgroundColor: "#E60000" }} // Bright Red
-        >
-          {loading ? (
-            <ActivityIndicator color="white" />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.headerLeft}>
+          {photoURL ? (
+            <Image source={{ uri: photoURL }} style={styles.avatar} />
           ) : (
-            <Text className="text-white text-2xl font-bold">Emergency SOS</Text>
+            <View style={[styles.avatar, styles.avatarPlaceholder]}>
+              <Text style={styles.avatarInitial}>
+                {displayName.charAt(0).toUpperCase()}
+              </Text>
+            </View>
           )}
-        </TouchableOpacity>
-
-        {/* Women & Children Button */}
+          <View>
+            <Text style={styles.greetingText}>{getGreeting()}</Text>
+            <Text style={styles.userName}>{displayName}</Text>
+          </View>
+        </View>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate(SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN)
-          }
-          activeOpacity={0.8}
-          className="h-20 rounded-2xl items-center justify-center shadow-lg mb-4"
-          style={{ backgroundColor: "#E91E63" }} // Pink
+          style={styles.notificationBtn}
+          onPress={() => navigation.navigate(SCREENS.NOTIFICATION)}
+          activeOpacity={0.7}
         >
-          <Text className="text-white text-2xl font-bold">
-            Women & Children
-          </Text>
+          <Icon name="notifications-outline" size={22} color="#1a1a1a" />
+          <View style={styles.notificationBadge} />
         </TouchableOpacity>
+      </View>
 
-        {/* Traffic Violation Button */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate(SCREENS.SAFETY_MONITOR)}
-          activeOpacity={0.8}
-          className="h-20 rounded-2xl items-center justify-center shadow-lg"
-          style={{ backgroundColor: "#E67E00" }} // Strong Orange
-        >
-          <Text className="text-white text-2xl font-bold">
-            Traffic Violation
-          </Text>
-        </TouchableOpacity>
+      <View style={styles.cardsContainer}>
+        {SERVICE_CARDS.map((card) => (
+          <TouchableOpacity
+            key={card.key}
+            style={[styles.serviceCard, { backgroundColor: card.color }]}
+            onPress={() => handleCardPress(card.key)}
+            activeOpacity={0.85}
+            disabled={card.key === "sos" && loading}
+          >
+            <View style={styles.cardIconContainer}>
+              {card.key === "sos" && loading ? (
+                <ActivityIndicator color="white" size="small" />
+              ) : (
+                <Icon name={card.icon} size={28} color="white" />
+              )}
+            </View>
+            <View>
+              <Text style={styles.cardTitle}>{card.title}</Text>
+              <Text style={styles.cardSubtitle}>{card.subtitle}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
       </View>
     </SafeAreaView>
   );

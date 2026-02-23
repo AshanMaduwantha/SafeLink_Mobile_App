@@ -1,51 +1,109 @@
 import { Dimensions, StyleSheet } from "react-native";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
     paddingTop: 60,
     paddingBottom: 40,
   },
   topSection: {
     alignItems: "center",
-    marginTop: 40,
+    paddingTop: 20,
+  },
+  badgeIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 16,
+    backgroundColor: "#E53935",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
   },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: "bold",
-    color: "#333333",
+    color: "#1a1a1a",
     textAlign: "center",
-    marginBottom: 16,
-    lineHeight: 34,
+    marginBottom: 14,
   },
   description: {
-    fontSize: 16,
-    color: "#666666",
+    fontSize: 15,
+    color: "#888",
     textAlign: "center",
-    lineHeight: 24,
-    paddingHorizontal: 20,
+    lineHeight: 23,
+    paddingHorizontal: 10,
   },
-  middleSection: {
-    flex: 1,
-    justifyContent: "flex-start",
+
+  illustrationContainer: {
+    width: 260,
+    height: 260,
+    alignSelf: "center",
+    justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 20,
-    paddingTop: 60,
+    marginVertical: 20,
   },
-  illustration: {
-    width: width * 0.8,
-    height: height * 0.35,
-    maxWidth: 300,
-    maxHeight: 250,
+  outerCircle: {
+    width: 240,
+    height: 240,
+    borderRadius: 120,
+    backgroundColor: "#FFF0ED",
+    justifyContent: "center",
+    alignItems: "center",
   },
+  middleCircle: {
+    width: 170,
+    height: 170,
+    borderRadius: 85,
+    backgroundColor: "#FCCCC6",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerCircle: {
+    width: 110,
+    height: 110,
+    borderRadius: 55,
+    backgroundColor: "#E53935",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  floatingCard: {
+    position: "absolute",
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    elevation: 5,
+  },
+  floatTopLeft: {
+    top: 25,
+    left: 8,
+  },
+  floatTopRight: {
+    top: 35,
+    right: 8,
+  },
+  floatBottomLeft: {
+    bottom: 35,
+    left: 20,
+  },
+  floatBottomRight: {
+    bottom: 40,
+    right: 12,
+  },
+
   paginationContainer: {
     alignItems: "center",
-    marginTop: -20,
-    marginBottom: 100,
+    marginBottom: 24,
   },
   paginationDots: {
     flexDirection: "row",
@@ -57,24 +115,20 @@ export const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     backgroundColor: "#E0E0E0",
-    marginHorizontal: 4,
+    marginHorizontal: 5,
   },
   activeDot: {
-    backgroundColor: "#0B6CFF",
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    backgroundColor: "#E53935",
   },
   bottomSection: {
     alignItems: "center",
-    paddingTop: 20,
+    paddingTop: 8,
   },
   nextButton: {
-    backgroundColor: "#0B6CFF",
-    borderRadius: 25,
+    backgroundColor: "#E53935",
+    borderRadius: 14,
     paddingVertical: 16,
-    paddingHorizontal: 40,
-    minWidth: width * 0.8,
+    minWidth: width - 64,
     marginBottom: 16,
   },
   nextButtonText: {
@@ -82,15 +136,14 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     textAlign: "center",
-    borderRadius: 10,
   },
   skipButton: {
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 20,
   },
   skipButtonText: {
-    color: "#0B6CFF",
-    fontSize: 16,
+    color: "#666",
+    fontSize: 15,
     fontWeight: "500",
   },
 });

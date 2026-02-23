@@ -6,207 +6,98 @@ export const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   header: {
-    paddingHorizontal: 16,
-    paddingTop: Platform.select({
-      ios: 20,
-      android: 20,
-    }),
-    paddingBottom: 5,
-  },
-  classestop: {
-    marginTop: 30,
-  },
-  userInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  profileImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    marginRight: 12,
-  },
-  welcomeText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#111827",
-  },
-  userName: {
-    fontSize: 14,
-    color: "#6B7280",
-  },
-  searchBar: {
-    backgroundColor: "#F3F4F6",
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  searchPlaceholder: {
-    color: "#9CA3AF",
-    flex: 1,
-  },
-  searchIcon: {
-    marginLeft: 12,
-  },
-  sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 16,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
+    paddingTop: Platform.select({ ios: 8, android: 16 }),
+    paddingBottom: 16,
   },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#111827",
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  seeAllText: {
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#2563EB",
-  },
-  categoryButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+  avatar: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     marginRight: 12,
   },
-  categoryButtonActive: {
-    backgroundColor: "#2563EB",
-  },
-  categoryButtonInactive: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-  },
-  categoryText: {
-    fontWeight: "500",
-  },
-  categoryTextActive: {
-    color: "#ffffff",
-  },
-  categoryTextInactive: {
-    color: "#374151",
-  },
-  courseCard: {
-    backgroundColor: "#ffffff",
-    borderRadius: 16,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
-    borderWidth: 1,
-    borderColor: "#F3F4F6",
-    overflow: "hidden",
-    width: 280,
-    marginRight: 16,
-  },
-  courseImage: {
-    width: "100%",
-    height: 160,
-  },
-  courseContent: {
-    padding: 16,
-  },
-  courseTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#111827",
-    marginBottom: 8,
-  },
-  instructorInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  instructorImage: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    marginRight: 8,
-  },
-  instructorName: {
-    fontSize: 14,
-    color: "#6B7280",
-  },
-  courseFooter: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  coursePrice: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#2563EB",
-  },
-  courseRating: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  ratingIcon: {
-    marginRight: 4,
-  },
-  ratingText: {
-    fontSize: 14,
-    color: "#6B7280",
-  },
-  newsCard: {
-    backgroundColor: "#ffffff",
-    borderRadius: 16,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
-    borderWidth: 1,
-    borderColor: "#F3F4F6",
-    overflow: "hidden",
-    width: 280,
-    marginRight: 16,
-  },
-  newsImage: {
-    width: "100%",
-    height: 128,
-  },
-  newsContent: {
-    padding: 16,
-  },
-  newsTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#111827",
-    marginBottom: 8,
-  },
-  newsDescription: {
-    fontSize: 14,
-    color: "#6B7280",
-    lineHeight: 20,
-  },
-  categoryScrollContainer: {
-    paddingRight: 16,
-  },
-  courseCardWidth: {
-    width: 220,
-  },
-  newsCardWidth: {
-    width: 220,
-  },
-  avatarContainer: {
+  avatarPlaceholder: {
+    backgroundColor: "#E0E0E0",
     justifyContent: "center",
     alignItems: "center",
   },
-  avatarText: {
-    color: "white",
-    fontWeight: "bold",
+  avatarInitial: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#666",
+  },
+  greetingText: {
+    fontSize: 13,
+    color: "#999",
+    marginBottom: 2,
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#1a1a1a",
+  },
+  notificationBtn: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: "#E8E8E8",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notificationBadge: {
+    position: "absolute",
+    top: 10,
+    right: 12,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "#E53935",
+    borderWidth: 1.5,
+    borderColor: "#fff",
+  },
+  cardsContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
+    justifyContent: "center",
+    gap: 16,
+  },
+  serviceCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 16,
+    paddingVertical: 28,
+    paddingHorizontal: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  cardIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 16,
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#ffffff",
+    marginBottom: 4,
+  },
+  cardSubtitle: {
+    fontSize: 14,
+    color: "rgba(255, 255, 255, 0.85)",
   },
 });

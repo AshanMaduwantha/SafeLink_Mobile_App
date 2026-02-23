@@ -1,148 +1,177 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    backgroundColor: "#ffffffff",
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingTop: 80,
+    backgroundColor: "#ffffff",
+    paddingHorizontal: 24,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
+    paddingBottom: 40,
+  },
+  titleSection: {
+    alignItems: "center",
+    marginBottom: 32,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "900",
+    fontSize: 26,
+    fontWeight: "800",
+    color: "#1a1a1a",
     marginBottom: 8,
-    color: "#000000",
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "#969696",
+    fontWeight: "500",
+    color: "#999",
+    textAlign: "center",
   },
-  forgotPassword: {
-    marginTop: 15,
-    color: "#0B6CFF",
+
+  fieldGroup: {
+    marginBottom: 16,
+  },
+  label: {
     fontSize: 14,
-    textDecorationLine: "underline",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: 8,
+  },
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+    backgroundColor: "#FFFFFF",
+    height: 52,
+    paddingHorizontal: 16,
+  },
+  textInput: {
+    flex: 1,
+    fontSize: 14,
+    color: "#333",
+    paddingVertical: 0,
+  },
+  passwordInput: {
+    fontSize: 14,
+    letterSpacing: 1,
+  },
+  eyeButton: {
+    padding: 4,
+    marginLeft: 8,
+  },
+
+  rememberForgotRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 4,
+    marginBottom: 28,
+  },
+  rememberMeRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    borderColor: "#0B6CFF",
+    width: 18,
+    height: 18,
+    borderWidth: 1.5,
+    borderColor: "#CCC",
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
+    marginRight: 8,
   },
-  checkmark: {
-    color: "#6200ee",
-    fontSize: 12,
-    fontWeight: "bold",
+  checkboxChecked: {
+    backgroundColor: "#E53935",
+    borderColor: "#E53935",
   },
   rememberText: {
-    fontSize: 14,
+    fontSize: 13,
     color: "#333",
+  },
+  forgotPasswordText: {
+    color: "#E53935",
+    fontSize: 13,
+    fontWeight: "500",
+    textDecorationLine: "underline",
+  },
+
+  signInButton: {
+    backgroundColor: "#E53935",
+    borderRadius: 12,
+    height: 52,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  signInButtonRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  signInButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  spinnerMargin: {
+    marginRight: 8,
+  },
+
+  dividerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
   },
   divider: {
     flex: 1,
     height: 1,
-    backgroundColor: "#a7a7a7ff",
+    backgroundColor: "#E5E7EB",
   },
   dividerText: {
-    fontSize: 14,
-    color: "#666",
-    paddingHorizontal: 16,
+    fontSize: 13,
+    color: "#999",
+    paddingHorizontal: 14,
   },
+
   socialButton: {
-    width: "100%",
-    borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#E5E7EB",
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#FFFFFF",
-    paddingVertical: 12,
-    minHeight: 50,
+    height: 52,
+    marginBottom: 12,
   },
   socialButtonText: {
-    fontSize: 16,
+    fontSize: 15,
     color: "#4B5563",
     fontWeight: "500",
+    marginLeft: 10,
   },
-  facebookLogo: {
-    fontSize: 28,
-    color: "#1877f2",
-    fontWeight: "bold",
-    fontFamily: "Arial",
+
+  footerSection: {
+    alignItems: "center",
+    marginTop: 40,
   },
-  socialSection: {
-    marginTop: 20,
+  footerRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   footerText: {
     fontSize: 14,
     color: "#333",
   },
-  footerSection: {
-    marginTop: 60,
-  },
   signUpLink: {
     fontSize: 14,
-    color: "#0B6CFF",
-    fontWeight: "500",
-  },
-  signUpButton: {
-    backgroundColor: "#226CFF",
-    borderRadius: 10,
-  },
-  titleSection: {
-    marginBottom: 20,
-  },
-  inputField: {
-    minHeight: 70,
-    paddingVertical: 22,
-    paddingHorizontal: 24,
-    fontSize: 14,
-    borderRadius: 16,
-  },
-  input: {
-    borderRadius: 7,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-    backgroundColor: "#FFFFFF",
-  },
-  passwordPlaceholder: {
-    fontSize: 20,
-    letterSpacing: 2,
-  },
-  passwordInputContainer: {
-    position: "relative",
-    justifyContent: "center",
-  },
-  passwordToggle: {
-    position: "absolute",
-    right: 15,
-    padding: 8,
-    zIndex: 1,
-  },
-  forgotPasswordLink: {
-    alignSelf: "flex-end",
-    marginTop: 10,
-  },
-  forgotPasswordText: {
-    color: "#0B6CFF",
-    fontSize: 14,
-    textDecorationLine: "underline",
-  },
-  formControl: {
-    marginBottom: 12,
-  },
-  rememberMeSection: {
-    marginBottom: 25,
-  },
-  spinnerMargin: {
-    marginRight: 8,
+    color: "#E53935",
+    fontWeight: "600",
   },
 });

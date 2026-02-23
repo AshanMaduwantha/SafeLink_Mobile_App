@@ -1,11 +1,10 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { VStack } from "@/components/ui/vstack";
 import { RootStackParamList } from "@navigation";
 import { SCREENS } from "@shared-constants";
-import GetStartedImage from "../../assets/getstarted.png";
+import Icon from "react-native-vector-icons/Ionicons";
 import { styles } from "./GetStartedScreen.style";
 
 type GetStartedScreenNavigationProp = StackNavigationProp<
@@ -22,40 +21,80 @@ const GetStartedScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <VStack space="xl" className="flex-1 justify-between">
-        {/* Top Section */}
-        <View style={styles.topSection}>
-          <Text style={styles.title}>Welcome to MobileApp</Text>
-          <Text style={styles.description}>
-            Your world of dance—organized, elegant, and always within reach.
-          </Text>
+      <View style={styles.topSection}>
+        <View style={styles.badgeIcon}>
+          <Icon name="shield-checkmark" size={28} color="#fff" />
         </View>
+        <Text style={styles.title}>Welcome to SafeLink</Text>
+        <Text style={styles.description}>
+          Your safety companion—always ready{"\n"}to protect you and connect you
+          with{"\n"}help when you need it most.
+        </Text>
+      </View>
 
-        {/* Middle Section - Image */}
-        <View style={styles.middleSection}>
-          <Image
-            source={GetStartedImage}
-            style={styles.illustration}
-            resizeMode="contain"
-          />
-        </View>
-
-        {/* Bottom Section - Button and Legal Text */}
-        <View style={styles.bottomSection}>
-          <TouchableOpacity
-            onPress={handleGetStarted}
-            style={styles.getStartedButton}
+      <View style={styles.middleSection}>
+        <View style={styles.cardsRow}>
+          <View
+            style={[
+              styles.featureCard,
+              styles.featureCardLeft,
+              { backgroundColor: "#E53935" },
+            ]}
           >
-            <Text style={styles.getStartedButtonText}>Get Started</Text>
-          </TouchableOpacity>
+            <View style={styles.featureCardIcon}>
+              <Icon name="alert-circle-outline" size={22} color="#fff" />
+            </View>
+            <Text style={styles.featureCardTitle}>Emergency{"\n"}SOS</Text>
+          </View>
 
-          <Text style={styles.legalText}>
-            By proceeding, you confirm your agreement to our{" "}
-            <Text style={styles.linkText}>Term of Service</Text> and{" "}
-            <Text style={styles.linkText}>Privacy Policy</Text>
-          </Text>
+          <View
+            style={[
+              styles.featureCard,
+              styles.featureCardCenter,
+              { backgroundColor: "#EC407A" },
+            ]}
+          >
+            <View style={styles.featureCardIcon}>
+              <Icon name="people-outline" size={24} color="#fff" />
+            </View>
+            <Text style={styles.featureCardTitle}>Women &{"\n"}Children</Text>
+          </View>
+
+          <View
+            style={[
+              styles.featureCard,
+              styles.featureCardRight,
+              { backgroundColor: "#F57C00" },
+            ]}
+          >
+            <View style={styles.featureCardIcon}>
+              <Icon name="warning-outline" size={22} color="#fff" />
+            </View>
+            <Text style={styles.featureCardTitle}>Traffic{"\n"}Violation</Text>
+          </View>
         </View>
-      </VStack>
+
+        <View style={styles.smallIconsRow}>
+          <View style={styles.smallIconCircle}>
+            <Icon name="call-outline" size={20} color="#2196F3" />
+          </View>
+          <View style={styles.smallIconCircle}>
+            <Icon name="shield-outline" size={20} color="#4CAF50" />
+          </View>
+          <View style={styles.smallIconCircle}>
+            <Icon name="heart-outline" size={20} color="#E91E63" />
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.bottomSection}>
+        <TouchableOpacity
+          onPress={handleGetStarted}
+          style={styles.getStartedButton}
+        >
+          <Text style={styles.getStartedButtonText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

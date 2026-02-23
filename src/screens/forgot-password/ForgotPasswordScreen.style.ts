@@ -1,60 +1,91 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    backgroundColor: "#ffffffff",
-    width: "100%",
-    paddingHorizontal: 20,
+    backgroundColor: "#ffffff",
+    paddingHorizontal: 24,
     paddingTop: 80,
   },
+  titleSection: {
+    alignItems: "center",
+    marginBottom: 32,
+  },
   title: {
-    fontSize: 24,
-    fontWeight: "900",
-    marginBottom: 8,
-    color: "#000000",
+    fontSize: 26,
+    fontWeight: "800",
+    color: "#1a1a1a",
+    marginBottom: 10,
+    textAlign: "center",
   },
   description: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: "400",
+    color: "#999",
+    textAlign: "center",
+    lineHeight: 21,
+    paddingHorizontal: 10,
+  },
+
+  fieldGroup: {
     marginBottom: 20,
-    color: "#969696",
-    lineHeight: 22,
   },
-  inputField: {
-    minHeight: 70,
-    paddingVertical: 22,
-    paddingHorizontal: 24,
+  label: {
     fontSize: 14,
-    borderRadius: 7,
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: 8,
   },
-  input: {
-    borderRadius: 7,
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#E5E7EB",
     backgroundColor: "#FFFFFF",
+    height: 52,
+    paddingHorizontal: 16,
   },
-  formControl: {
-    marginBottom: 30,
+  textInput: {
+    flex: 1,
+    fontSize: 14,
+    color: "#333",
+    paddingVertical: 0,
   },
+
   sendCodeButton: {
-    backgroundColor: "#226CFF",
-    borderRadius: 10,
+    backgroundColor: "#E53935",
+    borderRadius: 12,
+    height: 52,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sendCodeButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+
+  footerSection: {
+    position: "absolute",
+    bottom: 50,
+    left: 0,
+    right: 0,
+    alignItems: "center",
+  },
+  footerRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   footerText: {
     fontSize: 14,
     color: "#333",
   },
-  footerSection: {
-    marginTop: 380,
-  },
   signInLink: {
     fontSize: 14,
-    color: "#0B6CFF",
-    fontWeight: "500",
-  },
-  titleSection: {
-    marginBottom: 40,
+    color: "#E53935",
+    fontWeight: "600",
   },
 });
