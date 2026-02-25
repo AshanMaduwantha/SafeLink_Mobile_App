@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, ScrollView, TouchableOpacity, View } from "react-native";
+import { Alert, TouchableOpacity, View } from "react-native";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { notificationStorage } from "@/services/notifications/notificationStorage";
@@ -14,6 +14,127 @@ import { styles } from "./styles/ProfileScreen.style";
 const OverviewTab = () => {
   const navigation = useNavigation();
   const auth = getAuth();
+  const sectionOneItems = [
+    {
+      key: "my_account",
+      title: "My Account",
+      description: "Manage your account details",
+      icon: "person-outline",
+      iconColor: "#EF4444",
+      iconBackgroundColor: "#FEE2E2",
+      onPress: () => navigation.navigate(SCREENS.MY_ACCOUNT as never),
+    },
+    {
+      key: "privacy",
+      title: "Privacy & Security",
+      description: "Control your privacy settings",
+      icon: "lock-closed-outline",
+      iconColor: "#2563EB",
+      iconBackgroundColor: "#DBEAFE",
+      onPress: () => Alert.alert("Coming soon", "Privacy settings coming soon."),
+    },
+    {
+      key: "notifications",
+      title: "Notifications",
+      description: "Manage notification preferences",
+      icon: "notifications-outline",
+      iconColor: "#9333EA",
+      iconBackgroundColor: "#F3E8FF",
+      onPress: () => navigation.navigate(SCREENS.NOTIFICATION as never),
+    },
+    {
+      key: "emergency",
+      title: "Emergency Contacts",
+      description: "Add and manage contacts",
+      icon: "call-outline",
+      iconColor: "#EA580C",
+      iconBackgroundColor: "#FFEDD5",
+      onPress: () =>
+        Alert.alert("Coming soon", "Emergency contacts module coming soon."),
+    },
+  ];
+
+  const sectionTwoItems = [
+    {
+      key: "help_support",
+      title: "Help & Support",
+      description: "Get help with your account",
+      icon: "help-circle-outline",
+      iconColor: "#16A34A",
+      iconBackgroundColor: "#DCFCE7",
+      onPress: () => navigation.navigate(SCREENS.CONTACT_US as never),
+    },
+    {
+      key: "about",
+      title: "About SafeGuard",
+      description: "Learn more about the app",
+      icon: "information-circle-outline",
+      iconColor: "#4F46E5",
+      iconBackgroundColor: "#E0E7FF",
+      onPress: () => navigation.navigate(SCREENS.ABOUT as never),
+    },
+    {
+      key: "app_settings",
+      title: "App Settings",
+      description: "Configure app preferences",
+      icon: "settings-outline",
+      iconColor: "#6B7280",
+      iconBackgroundColor: "#E5E7EB",
+      onPress: () => Alert.alert("Coming soon", "App settings coming soon."),
+    },
+  ];
+
+  const renderMenuRow = (
+    item: {
+      key: string;
+      title: string;
+      description: string;
+      icon: string;
+      iconColor: string;
+      iconBackgroundColor: string;
+      onPress: () => void;
+    },
+    isLast: boolean,
+  ) => (
+    <TouchableOpacity
+      key={item.key}
+      style={[styles.menuItem, isLast && styles.menuItemLast]}
+      onPress={item.onPress}
+      activeOpacity={0.75}
+    >
+      <View
+        style={[
+          styles.menuIconCircle,
+          {
+            backgroundColor: item.iconBackgroundColor,
+          },
+        ]}
+      >
+        <Icon name={item.icon} size={19} color={item.iconColor} />
+      </View>
+
+      <View style={styles.menuTextContent}>
+        <TextWrapper style={styles.menuItemTitle} fontFamily={fonts.poppins.regular}>
+          {item.title}
+        </TextWrapper>
+        <TextWrapper
+          style={styles.menuItemSubtitle}
+          fontFamily={fonts.poppins.regular}
+        >
+          {item.description}
+        </TextWrapper>
+      </View>
+
+      <View style={styles.chevronCircle}>
+        <Icon
+          name="chevron-forward-outline"
+          size={18}
+          color="#9CA3AF"
+          style={styles.arrowIcon}
+        />
+      </View>
+    </TouchableOpacity>
+  );
 
   const handleLogout = () => {
     Alert.alert("Log Out", "Are you sure you want to log out?", [
@@ -68,123 +189,70 @@ const OverviewTab = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      {/* Account Settings */}
-      <View style={styles.section}>
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate(SCREENS.MY_ACCOUNT as never)}
-        >
-          <Icon
-            name="person-outline"
-            size={20}
-            color="#2176FF"
-            style={styles.menuIcon}
-          />
-          <View>
-            <TextWrapper
-              style={styles.menuItemText}
-              fontFamily={fonts.poppins.regular}
-            >
-              My Account
-            </TextWrapper>
-            <TextWrapper
-              style={styles.menuItemDescription}
-              fontFamily={fonts.poppins.regular}
-            >
-              Make changes to your account
-            </TextWrapper>
-          </View>
-          <Icon
-            name="chevron-forward-outline"
-            size={20}
-            color="#A0A0A0"
-            style={styles.arrowIcon}
-          />
-        </TouchableOpacity>
+    <View style={styles.profileSectionsContainer}>
+      <TextWrapper style={styles.sectionTitle} fontFamily={fonts.poppins.regular}>
+        ACCOUNT SETTINGS
+      </TextWrapper>
+      <View style={styles.sectionCard}>
+        {sectionOneItems.map((item, index) =>
+          renderMenuRow(item, index === sectionOneItems.length - 1),
+        )}
+      </View>
 
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate(SCREENS.CONTACT_US as never)}
-        >
-          <Icon
-            name="help-circle-outline"
-            size={20}
-            color="#2176FF"
-            style={styles.menuIcon}
-          />
-          <View>
-            <TextWrapper
-              style={styles.menuItemText}
-              fontFamily={fonts.poppins.regular}
-            >
-              Help & Support
-            </TextWrapper>
-          </View>
-          <Icon
-            name="chevron-forward-outline"
-            size={20}
-            color="#A0A0A0"
-            style={styles.arrowIcon}
-          />
-        </TouchableOpacity>
+      <TextWrapper
+        style={[styles.sectionTitle, styles.secondarySectionTitle]}
+        fontFamily={fonts.poppins.regular}
+      >
+        SUPPORT & INFORMATION
+      </TextWrapper>
+      <View style={styles.sectionCard}>
+        {sectionTwoItems.map((item, index) =>
+          renderMenuRow(item, index === sectionTwoItems.length - 1),
+        )}
+      </View>
 
-        <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate(SCREENS.ABOUT as never)}
-        >
-          <Icon
-            name="information-circle-outline"
-            size={20}
-            color="#2176FF"
-            style={styles.menuIcon}
-          />
-          <View>
-            <TextWrapper
-              style={styles.menuItemText}
-              fontFamily={fonts.poppins.regular}
-            >
-              About App
-            </TextWrapper>
+      <TouchableOpacity
+        style={[styles.sectionCard, styles.logoutCard]}
+        onPress={handleLogout}
+        activeOpacity={0.75}
+      >
+        <View style={[styles.menuItem, styles.menuItemLast, styles.logoutRow]}>
+          <View style={[styles.menuIconCircle, styles.logoutIconCircle]}>
+            <Icon name="log-out-outline" size={19} color="#EF4444" />
           </View>
-          <Icon
-            name="chevron-forward-outline"
-            size={20}
-            color="#A0A0A0"
-            style={styles.arrowIcon}
-          />
-        </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
-          <Icon
-            name="log-out-outline"
-            size={20}
-            color="#2176FF"
-            style={styles.menuIcon}
-          />
-          <View>
-            <TextWrapper
-              style={styles.menuItemText}
-              fontFamily={fonts.poppins.regular}
-            >
-              Log out
+          <View style={styles.menuTextContent}>
+            <TextWrapper style={styles.logoutTitle} fontFamily={fonts.poppins.regular}>
+              Log Out
             </TextWrapper>
             <TextWrapper
-              style={styles.menuItemDescription}
+              style={styles.logoutSubtitle}
               fontFamily={fonts.poppins.regular}
             >
               Sign out of your account
             </TextWrapper>
           </View>
-          <Icon
-            name="chevron-forward-outline"
-            size={20}
-            color="#A0A0A0"
-            style={styles.arrowIcon}
-          />
-        </TouchableOpacity>
+
+          <View style={[styles.chevronCircle, styles.logoutChevronCircle]}>
+            <Icon
+              name="chevron-forward-outline"
+              size={18}
+              color="#EF4444"
+              style={styles.arrowIcon}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      <View style={styles.appVersionContainer}>
+        <TextWrapper style={styles.appVersionText} fontFamily={fonts.poppins.regular}>
+          SafeGuard Emergency App
+        </TextWrapper>
+        <TextWrapper style={styles.appVersionText} fontFamily={fonts.poppins.regular}>
+          Version 2.4.1
+        </TextWrapper>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

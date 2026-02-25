@@ -107,6 +107,12 @@ const Stack = createStackNavigator<RootStackParamList>();
 const MainTabs = () => {
   const scheme = useColorScheme();
   const isDarkMode = scheme === "dark";
+  const activeTabColor = "#FF3B30";
+  const inactiveTabColor = "#8B95A1";
+  const hiddenTabScreenOptions = {
+    tabBarButton: () => null,
+    tabBarItemStyle: { display: "none" as const },
+  };
 
   const renderTabIcon = (
     route: any,
@@ -120,11 +126,11 @@ const MainTabs = () => {
         iconName = "home-outline";
         break;
       case SCREENS.TIME_TABLE:
-        iconName = "calendar-outline";
+        iconName = "heart-outline";
         break;
 
       case SCREENS.CLASSES:
-        iconName = "grid-outline";
+        iconName = "location-outline";
         break;
       case SCREENS.PROFILE:
         iconName = "person-outline";
@@ -135,11 +141,7 @@ const MainTabs = () => {
     }
     return (
       <View style={styles.tabIconContainer}>
-        <Icon
-          name={iconName}
-          size={size}
-          color={focused ? palette.primary : color}
-        />
+        <Icon name={iconName} size={size} color={focused ? activeTabColor : color} />
       </View>
     );
   };
@@ -151,29 +153,35 @@ const MainTabs = () => {
         tabBarIcon: ({ focused, color, size }) =>
           renderTabIcon(route, focused, color, size),
         tabBarShowLabel: true,
-        tabBarActiveTintColor: palette.primary,
-        tabBarInactiveTintColor: palette.shadow,
+        tabBarActiveTintColor: activeTabColor,
+        tabBarInactiveTintColor: inactiveTabColor,
         tabBarLabelStyle: {
           fontFamily: fonts.poppins.regular,
           fontSize: 12,
-          marginBottom: 6,
+          lineHeight: 16,
+          marginTop: 4,
+          marginBottom: Platform.OS === "ios" ? 4 : 8,
         },
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: isDarkMode ? palette.black : palette.white,
-          height: 70 + (Platform.OS === "ios" ? 20 : 0),
-          paddingBottom: Platform.OS === "ios" ? 20 : 0,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          height: Platform.OS === "ios" ? 84 : 72,
+          paddingBottom: Platform.OS === "ios" ? 18 : 10,
+          paddingTop: 8,
+          borderTopWidth: 1,
+          borderTopColor: "#E5E7EB",
           shadowColor: "#000",
-          shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 3,
-          elevation: 5,
+          shadowOffset: { width: 0, height: -1 },
+          shadowOpacity: 0.02,
+          shadowRadius: 2,
+          elevation: 2,
           position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
+        },
+        tabBarItemStyle: {
+          paddingTop: 2,
         },
       })}
     >
@@ -181,10 +189,101 @@ const MainTabs = () => {
       <Tab.Screen
         name={SCREENS.TIME_TABLE}
         component={TimeTableScreen}
-        options={{ tabBarLabel: "Book Now" }}
+        options={{ tabBarLabel: "Support" }}
       />
-      <Tab.Screen name={SCREENS.CLASSES} component={MyScheduleScreen} />
-      <Tab.Screen name={SCREENS.PROFILE} component={ProfileScreen} />
+      <Tab.Screen
+        name={SCREENS.CLASSES}
+        component={MyScheduleScreen}
+        options={{ tabBarLabel: "Nearby" }}
+      />
+      <Tab.Screen
+        name={SCREENS.PROFILE}
+        component={ProfileScreen}
+        options={{ tabBarLabel: "Profile" }}
+      />
+      <Tab.Screen
+        name={SCREENS.DETAIL}
+        component={DetailScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.NOTIFICATION}
+        component={NotificationScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.MY_ACCOUNT}
+        component={MyAccountScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.ABOUT}
+        component={AboutScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.CONTACT_US}
+        component={ContactUsScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.LIVE_STREAM}
+        component={LiveStreamScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.VOICE_NOTE}
+        component={VoiceNoteScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.SAFETY_MONITOR}
+        getComponent={() =>
+          require("@screens/traffic-violation/SafetyMonitorScreen").default
+        }
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN}
+        component={SafetyMonitorWomenChildrenScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.VIEW_HEATMAP}
+        component={ViewHeatmapScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.SAFETY_ALERTS}
+        component={SafetyAlertsScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.SAFETY_INSIGHTS}
+        component={SafetyInsightsScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.REPORT_VIOLATION}
+        getComponent={() =>
+          require("@screens/traffic-violation/ReportViolationScreen").default
+        }
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.DRIVE_MODE}
+        getComponent={() =>
+          require("@screens/traffic-violation/DriveModeScreen").default
+        }
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.MY_REPORTS}
+        getComponent={() =>
+          require("@screens/traffic-violation/MyReportsScreen").default
+        }
+        options={hiddenTabScreenOptions}
+      />
     </Tab.Navigator>
   );
 };
@@ -291,61 +390,9 @@ const Navigation = () => {
           component={PasswordChangedScreen}
         />
         <Stack.Screen name={SCREENS.ROOT} component={MainTabs} />
-        <Stack.Screen name={SCREENS.DETAIL} component={DetailScreen} />
-
-        <Stack.Screen
-          name={SCREENS.NOTIFICATION}
-          component={NotificationScreen}
-        />
-
-        <Stack.Screen name={SCREENS.MY_ACCOUNT} component={MyAccountScreen} />
-        <Stack.Screen name={SCREENS.ABOUT} component={AboutScreen} />
-        <Stack.Screen name={SCREENS.CONTACT_US} component={ContactUsScreen} />
         <Stack.Screen
           name={SCREENS.ACCOUNT_VERIFICATION}
           component={AccountVerificationScreen}
-        />
-        <Stack.Screen name={SCREENS.LIVE_STREAM} component={LiveStreamScreen} />
-        <Stack.Screen name={SCREENS.VOICE_NOTE} component={VoiceNoteScreen} />
-        <Stack.Screen
-          name={SCREENS.SAFETY_MONITOR}
-          getComponent={() =>
-            require("@screens/traffic-violation/SafetyMonitorScreen").default
-          }
-        />
-        <Stack.Screen
-          name={SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN}
-          component={SafetyMonitorWomenChildrenScreen}
-        />
-        <Stack.Screen
-          name={SCREENS.VIEW_HEATMAP}
-          component={ViewHeatmapScreen}
-        />
-        <Stack.Screen
-          name={SCREENS.SAFETY_ALERTS}
-          component={SafetyAlertsScreen}
-        />
-        <Stack.Screen
-          name={SCREENS.SAFETY_INSIGHTS}
-          component={SafetyInsightsScreen}
-        />
-        <Stack.Screen
-          name={SCREENS.REPORT_VIOLATION}
-          getComponent={() =>
-            require("@screens/traffic-violation/ReportViolationScreen").default
-          }
-        />
-        <Stack.Screen
-          name={SCREENS.DRIVE_MODE}
-          getComponent={() =>
-            require("@screens/traffic-violation/DriveModeScreen").default
-          }
-        />
-        <Stack.Screen
-          name={SCREENS.MY_REPORTS}
-          getComponent={() =>
-            require("@screens/traffic-violation/MyReportsScreen").default
-          }
         />
       </Stack.Navigator>
     </NavigationContainer>
