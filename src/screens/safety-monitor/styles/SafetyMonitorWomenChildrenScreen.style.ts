@@ -127,6 +127,9 @@ export const styles = StyleSheet.create({
   insightsButton: {
     backgroundColor: "#6A5ACD",
   },
+  mediaButton: {
+    backgroundColor: "#1A936F",
+  },
   actionButtonText: {
     flex: 1,
     fontSize: 16,

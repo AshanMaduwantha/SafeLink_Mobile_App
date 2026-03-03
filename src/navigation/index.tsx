@@ -43,6 +43,7 @@ import SafetyAlertsScreen from "@screens/safety-monitor/SafetyAlertsScreen";
 import SafetyInsightsScreen from "@screens/safety-monitor/SafetyInsightsScreen";
 import SafetyMonitorWomenChildrenScreen from "@screens/safety-monitor/SafetyMonitorWomenChildrenScreen";
 import ViewHeatmapScreen from "@screens/safety-monitor/ViewHeatmapScreen";
+import WomenChildrenMediaScreen from "@screens/safety-monitor/WomenChildrenMediaScreen";
 import SignUpScreen from "@screens/signup/SignUpScreen";
 import TimeTableScreen from "@screens/time-table/TimeTableScreen";
 import { VoiceNoteScreen } from "@screens/voice-note";
@@ -94,6 +95,7 @@ export type RootStackParamList = {
   [SCREENS.REPORT_VIOLATION]: undefined;
   [SCREENS.DRIVE_MODE]: undefined;
   [SCREENS.MY_REPORTS]: undefined;
+  [SCREENS.WOMEN_CHILDREN_MEDIA]: undefined;
 };
 
 export type LoginScreenNavigationProp = StackNavigationProp<
@@ -246,6 +248,11 @@ const MainTabs = () => {
       <Tab.Screen
         name={SCREENS.SAFETY_MONITOR_WOMEN_CHILDREN}
         component={SafetyMonitorWomenChildrenScreen}
+        options={hiddenTabScreenOptions}
+      />
+      <Tab.Screen
+        name={SCREENS.WOMEN_CHILDREN_MEDIA}
+        component={WomenChildrenMediaScreen}
         options={hiddenTabScreenOptions}
       />
       <Tab.Screen

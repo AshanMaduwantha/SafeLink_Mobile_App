@@ -18,6 +18,14 @@ interface EnvironmentConfig {
   S3_REGION?: string;
   S3_ACCESS_KEY_ID?: string;
   S3_SECRET_ACCESS_KEY?: string;
+
+  // Women & Children S3 Bucket
+  S3_BUCKET_NAME?: string;
+
+  // Detection & ML APIs
+  DETECTION_API?: string;
+  ML_API_URL?: string;
+  WEB_PORTAL_API_URL?: string;
 }
 
 // Validate required environment variables
@@ -57,6 +65,17 @@ export const config = {
   IS_DEV: validatedConfig.APP_ENV === "development",
   IS_STAGING: validatedConfig.APP_ENV === "staging",
   IS_PROD: validatedConfig.APP_ENV === "production",
+
+  // Women & Children S3 bucket
+  S3_BUCKET_NAME: Config.S3_BUCKET_NAME || "women-and-children",
+  S3_REGION: Config.S3_REGION || "eu-north-1",
+  S3_ACCESS_KEY_ID: Config.S3_ACCESS_KEY_ID || "",
+  S3_SECRET_ACCESS_KEY: Config.S3_SECRET_ACCESS_KEY || "",
+
+  // Detection & ML
+  DETECTION_API: Config.DETECTION_API || "",
+  ML_API_URL: Config.ML_API_URL || "https://ashan26-SafeLink.hf.space",
+  WEB_PORTAL_API_URL: Config.WEB_PORTAL_API_URL || "",
 };
 
 // Log current environment

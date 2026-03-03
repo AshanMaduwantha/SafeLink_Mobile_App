@@ -42,4 +42,5 @@ export const SCREENS = {
   REPORT_VIOLATION: "ReportViolation",
   DRIVE_MODE: "DriveMode",
   MY_REPORTS: "MyReports",
+  WOMEN_CHILDREN_MEDIA: "WomenChildrenMedia",
 };

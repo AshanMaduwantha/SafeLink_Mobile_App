@@ -134,6 +134,24 @@ const SafetyMonitorWomenChildrenScreen = () => {
             <Icon name="chevron-forward" size={24} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
+
+        {/* Media Gallery Button */}
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => navigation.navigate(SCREENS.WOMEN_CHILDREN_MEDIA)}
+          activeOpacity={0.8}
+        >
+          <View style={[styles.actionButtonContent, styles.mediaButton]}>
+            <Icon name="images-outline" size={24} color="#FFFFFF" />
+            <TextWrapper
+              style={styles.actionButtonText}
+              fontFamily={fonts.poppins.regular}
+            >
+              Media Gallery & Detection
+            </TextWrapper>
+            <Icon name="chevron-forward" size={24} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </Screen>
   );
