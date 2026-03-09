@@ -26,6 +26,7 @@ interface EnvironmentConfig {
   DETECTION_API?: string;
   ML_API_URL?: string;
   WEB_PORTAL_API_URL?: string;
+  GOOGLE_MAPS_API_KEY?: string;
 }
 
 // Validate required environment variables
@@ -76,6 +77,7 @@ export const config = {
   DETECTION_API: Config.DETECTION_API || "",
   ML_API_URL: Config.ML_API_URL || "https://ashan26-SafeLink.hf.space",
   WEB_PORTAL_API_URL: Config.WEB_PORTAL_API_URL || "",
+  GOOGLE_MAPS_API_KEY: Config.GOOGLE_MAPS_API_KEY || "",
 };
 
 // Log current environment

@@ -65,6 +65,7 @@
     "react-native-gesture-handler": "^2.14.1",
     "react-native-get-random-values": "^2.0.0",
     "react-native-localization": "^2.3.2",
+    "react-native-maps": "^1.27.1",
     "react-native-nitro-modules": "^0.33.9",
     "react-native-permissions": "^5.4.4",
     "react-native-qrcode-svg": "^6.3.20",

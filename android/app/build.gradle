@@ -3,6 +3,9 @@ apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply plugin: "com.google.gms.google-services"
 
+def dotenv = project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: dotenv
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -85,6 +88,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [
+            GOOGLE_MAPS_API_KEY: (project.env.get("GOOGLE_MAPS_API_KEY") ?: "")
+        ]
     }
     signingConfigs {
         debug {
@@ -122,4 +128,3 @@ dependencies {
 }
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
